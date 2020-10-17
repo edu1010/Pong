@@ -30,7 +30,6 @@ function love.load(arg)
 end
 
 function love.update(dt)
-  print(h)
   -- TODO 9: Make the ball move using the ballSpeed variable
   -- TODO 17: Comment all the code of the TODO 9 and make the ball move using the ballAngle variable
   
@@ -56,9 +55,10 @@ function love.draw()
   
   love.graphics.line( w/2, 0,w/2,h)
   -- TODO 2: Draw the ball at the center of the field
-  
+  love.graphics.circle( "fill", w/2, h/2, 2.0 )
   -- TODO 3: Draw the player and cpu paddles
-  
+  love.graphics.rectangle( "fill", w-w+100, h/2, 10, 50 )
+  love.graphics.rectangle( "fill", w-100, h/2, 10, 50 )
   -- TODO 4: Draw the player and cpu points
   
   -- TODO 7: Comment all the code of the TODO 2 and use the ballX and ballY variables to draw the ball
