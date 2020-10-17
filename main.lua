@@ -57,8 +57,8 @@ function love.draw()
   -- TODO 2: Draw the ball at the center of the field
   love.graphics.circle( "fill", w/2, h/2, 2.0 )
   -- TODO 3: Draw the player and cpu paddles
-  love.graphics.rectangle( "fill", w-w+100, h/2, 10, 50 )
-  love.graphics.rectangle( "fill", w-100, h/2, 10, 50 )
+  love.graphics.rectangle( "fill", w-w+100, h/2, -5, 25 )
+  love.graphics.rectangle( "fill", w-100, h/2, -5, 25 )
   -- TODO 4: Draw the player and cpu points
   
   -- TODO 7: Comment all the code of the TODO 2 and use the ballX and ballY variables to draw the ball
