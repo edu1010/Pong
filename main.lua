@@ -13,7 +13,8 @@ function love.load(arg)
   w, h = love.graphics.getDimensions() -- Get the screen width and height
   
   -- TODO 5: Load the font to use in the game and set it
-  
+  font = love.graphics.newFont( "pong.ttf",50)
+  love.graphics.setFont( font )
   -- TODO 6: Initialize the position of the ball at the center of the screen
   
   -- TODO 8: Initialize the ball speed for going to the left
@@ -60,8 +61,8 @@ function love.draw()
   love.graphics.rectangle( "fill", w-w+100, h/2, -5, 25 )
   love.graphics.rectangle( "fill", w-100, h/2, -5, 25 )
   -- TODO 4: Draw the player and cpu points
-  love.graphics.print("0",((h/2)/2),20,0,5,5)
-  love.graphics.print("0",(h-((h/2)/2)),20,0,5,5)
+  love.graphics.print("0",((h/2)/2),20)
+  love.graphics.print("0",(h-((h/2)/2)),20)
   -- TODO 7: Comment all the code of the TODO 2 and use the ballX and ballY variables to draw the ball
   
   -- TODO 11: Comment all the code of the TODO 3 and use the playerX, playerY, cpuX and cpuY variables to draw the player and cpu paddles
