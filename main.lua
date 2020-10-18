@@ -26,12 +26,19 @@ function love.load(arg)
   cpuX = w-100
   cpuY = h/2
   -- TODO 12: Initialize the paddle speed
-  paddleSpeed = 10
+  paddleSpeed = 2
   -- TODO 16: Initialize the ball angle
   
   -- TODO 18: Comment all the code of the TODO 8 and initialize the ball speed without sign
   
   -- TODO 21: Initialize the player and cpu points variables
+end
+
+function colision()
+  DeltaX = ballX - Max(RectX, Min(ballX, playerX + 10));
+  DeltaY = ballY - Max(RectY, Min(ballY, playerY + 50));
+  return (DeltaX * DeltaX + DeltaY * DeltaY) < (5 * 5);
+  
 end
 
 function love.update(dt)
@@ -41,8 +48,14 @@ function love.update(dt)
   -- TODO 17: Comment all the code of the TODO 9 and make the ball move using the ballAngle variable
   
   -- TODO 13: Move the player paddle getting the up and down arrows keys of the keyboard using the variable paddleSpeed
-  
+  if love.keyboard.isDown("up") then
+    playerY = playerY +1 *paddleSpeed
+  elseif love.keyboard.isDown("down") then
+    playerY = playerY -1 *paddleSpeed
+  end
   -- TODO 14: Detect the ball collision with the player paddle and make it bounce
+  if colision()then
+    ballSpeed=-ballSpeed
   
   -- TODO 15: Detect the ball collision with the cpu paddle and make it bounce
   
