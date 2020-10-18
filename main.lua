@@ -1,9 +1,9 @@
 local w, h -- Variables to store the screen width and height
 
---local ballX, ballY -- Variables to store the position of the ball in the screen (Uncomment at the start of TODO 6)
---local ballSpeed -- Variable to store the ball speed (Uncomment at the start of TODO 8)
---local playerX, playerY, cpuX, cpuY -- Variables to store the position of the player and cpu paddle (Uncomment at the start of TODO 10)
---local paddleSpeed -- Variable to store the paddle speed (Uncomment at the start of TODO 12)
+local ballX, ballY -- Variables to store the position of the ball in the screen (Uncomment at the start of TODO 6)
+local ballSpeed -- Variable to store the ball speed (Uncomment at the start of TODO 8)
+local playerX, playerY, cpuX, cpuY -- Variables to store the position of the player and cpu paddle (Uncomment at the start of TODO 10)
+local paddleSpeed -- Variable to store the paddle speed (Uncomment at the start of TODO 12)
 --local ballAngle -- Variable to estore the ball movement angle (Uncomment at the start of TODO 16)
 --local playerPoints, cpuPoints -- Variable to store the player and cpu points (Uncomment at the start of TODO 21)
 
@@ -16,13 +16,17 @@ function love.load(arg)
   font = love.graphics.newFont( "pong.ttf",50)
   love.graphics.setFont( font )
   -- TODO 6: Initialize the position of the ball at the center of the screen
-  
+  ballX = w/2
+  ballY = h/2
   -- TODO 8: Initialize the ball speed for going to the left
-  
+  ballSpeed=-5
   -- TODO 10: Initialize the player and cpu paddles position
-  
+  playerX = w-w+100
+  playerY = h/2
+  cpuX = w-100
+  cpuY = h/2
   -- TODO 12: Initialize the paddle speed
-  
+  paddleSpeed = 5
   -- TODO 16: Initialize the ball angle
   
   -- TODO 18: Comment all the code of the TODO 8 and initialize the ball speed without sign
@@ -32,6 +36,8 @@ end
 
 function love.update(dt)
   -- TODO 9: Make the ball move using the ballSpeed variable
+  ballX=ballX+ballSpeed*dt
+  
   -- TODO 17: Comment all the code of the TODO 9 and make the ball move using the ballAngle variable
   
   -- TODO 13: Move the player paddle getting the up and down arrows keys of the keyboard using the variable paddleSpeed
@@ -56,16 +62,17 @@ function love.draw()
   
   love.graphics.line( w/2, 0,w/2,h)
   -- TODO 2: Draw the ball at the center of the field
-  love.graphics.circle( "fill", w/2, h/2, 2.0 )
+  --love.graphics.circle( "fill", w/2, h/2, 2.0 )
   -- TODO 3: Draw the player and cpu paddles
-  love.graphics.rectangle( "fill", w-w+100, h/2, -5, 25 )
-  love.graphics.rectangle( "fill", w-100, h/2, -5, 25 )
+  --love.graphics.rectangle( "fill", w-w+100, h/2, -5, 25 )
+  --love.graphics.rectangle( "fill", w-100, h/2, -5, 25 )
   -- TODO 4: Draw the player and cpu points
   love.graphics.print("0",((h/2)/2),20)
   love.graphics.print("0",(h-((h/2)/2)),20)
   -- TODO 7: Comment all the code of the TODO 2 and use the ballX and ballY variables to draw the ball
-  
+  love.graphics.circle("fill",ballX,ballY,5.0)
   -- TODO 11: Comment all the code of the TODO 3 and use the playerX, playerY, cpuX and cpuY variables to draw the player and cpu paddles
-  
+  love.graphics.rectangle( "fill", playerX, playerY, -5, 25 )
+  love.graphics.rectangle( "fill", cpuX, cpuY, -5, 25 )
   -- TODO 22: Comment all the code of the TODO 4 and use the playerPoints and cpuPOints variables to draw the points
 end
