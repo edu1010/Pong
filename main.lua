@@ -26,7 +26,7 @@ function love.load(arg)
   cpuX = w-100
   cpuY = h/2
   -- TODO 12: Initialize the paddle speed
-  paddleSpeed = 5
+  paddleSpeed = 10
   -- TODO 16: Initialize the ball angle
   
   -- TODO 18: Comment all the code of the TODO 8 and initialize the ball speed without sign
