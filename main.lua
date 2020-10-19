@@ -19,7 +19,7 @@ function love.load(arg)
   ballX = w/2
   ballY = h/2
   -- TODO 8: Initialize the ball speed for going to the left
-  ballSpeed=-5
+  ballSpeed=-50
   -- TODO 10: Initialize the player and cpu paddles position
   playerX = w-w+100
   playerY = h/2
@@ -34,9 +34,9 @@ function love.load(arg)
   -- TODO 21: Initialize the player and cpu points variables
 end
 
-function colision()
-  DeltaX = ballX - Max(RectX, Min(ballX, playerX + 10));
-  DeltaY = ballY - Max(RectY, Min(ballY, playerY + 50));
+function colision(rectX, rectY)
+  DeltaX = ballX - math.max(rectX, math.min(ballX, rectX + 10));
+  DeltaY = ballY - math.max(rectY, math.min(ballY, rectY + 50));
   return (DeltaX * DeltaX + DeltaY * DeltaY) < (5 * 5);
   
 end
@@ -54,11 +54,15 @@ function love.update(dt)
     playerY = playerY -1 *paddleSpeed
   end
   -- TODO 14: Detect the ball collision with the player paddle and make it bounce
-  if colision()then
+  if colision(playerX,playerY)then
     ballSpeed=-ballSpeed
+  end
+  
   
   -- TODO 15: Detect the ball collision with the cpu paddle and make it bounce
-  
+  if colision(cpuX,cpuY)then
+    ballSpeed=-ballSpeed
+  end
   -- TODO 25: Add the needed code at TODO 19 to make the ball quicker at paddle collision
   -- TODO 19: Comment all the code of the TODO 14 and TODO 15 and make it bounce using the new ball angle
   
