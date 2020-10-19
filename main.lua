@@ -26,7 +26,7 @@ function love.load(arg)
   cpuX = w-100
   cpuY = h/2
   -- TODO 12: Initialize the paddle speed
-  paddleSpeed = 4
+  paddleSpeed = 120
   -- TODO 16: Initialize the ball angle
   ballAngle=math.rad(210)
 
@@ -78,9 +78,9 @@ function love.update(dt)
   
   -- TODO 13: Move the player paddle getting the up and down arrows keys of the keyboard using the variable paddleSpeed
   if love.keyboard.isDown("up") then
-    playerY = playerY -1 *paddleSpeed
+    playerY = playerY -1 *paddleSpeed *dt
   elseif love.keyboard.isDown("down") then
-    playerY = playerY +1 *paddleSpeed
+    playerY = playerY +1 *paddleSpeed *dt
   end
   --[[
   -- TODO 14: Detect the ball collision with the player paddle and make it bounce
@@ -120,6 +120,11 @@ function love.update(dt)
     end
   
   -- TODO 24: Make the cpu paddle move to get the ball
+  if(cpuY<ballY)then
+  cpuY = cpuY+1 * paddleSpeed *dt
+elseif(cpuY>ballY)then
+  cpuY = cpuY-1 * paddleSpeed *dt
+  end
 end
 
 function love.draw()
