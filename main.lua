@@ -63,7 +63,7 @@ function love.update(dt)
  
   -- TODO 15: Detect the ball collision with the cpu paddle and make it bounce
   if colision(cpuX,cpuY)then
-    --ballSpeed=-ballSpeed
+    ballSpeed=-ballSpeed
     ballAngle= math.atan(ballY/-ballX)+math.rad(180)
   end
   -- TODO 25: Add the needed code at TODO 19 to make the ball quicker at paddle collision
