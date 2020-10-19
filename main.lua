@@ -5,7 +5,7 @@ local ballSpeed -- Variable to store the ball speed (Uncomment at the start of T
 local playerX, playerY, cpuX, cpuY -- Variables to store the position of the player and cpu paddle (Uncomment at the start of TODO 10)
 local paddleSpeed -- Variable to store the paddle speed (Uncomment at the start of TODO 12)
 local ballAngle -- Variable to estore the ball movement angle (Uncomment at the start of TODO 16)
---local playerPoints, cpuPoints -- Variable to store the player and cpu points (Uncomment at the start of TODO 21)
+local playerPoints, cpuPoints -- Variable to store the player and cpu points (Uncomment at the start of TODO 21)
 
 function love.load(arg)
   if arg[#arg] == "-debug" then require("mobdebug").start() end -- Enable the debugging with ZeroBrane Studio
@@ -28,12 +28,13 @@ function love.load(arg)
   -- TODO 12: Initialize the paddle speed
   paddleSpeed = 4
   -- TODO 16: Initialize the ball angle
-
   ballAngle=math.rad(210)
 
   -- TODO 18: Comment all the code of the TODO 8 and initialize the ball speed without sign
   ballSpeed=100
   -- TODO 21: Initialize the player and cpu points variables
+  playerPoints = 0
+  cpuPoints = 0
 end
 
 function colision(rectX, rectY)
@@ -115,12 +116,16 @@ function love.draw()
   --love.graphics.rectangle( "fill", w-w+100, h/2, -5, 25 )
   --love.graphics.rectangle( "fill", w-100, h/2, -5, 25 )
   -- TODO 4: Draw the player and cpu points
+  --[[
   love.graphics.print("0",(w/4),20)
   love.graphics.print("0",(3*((w/4))),20)
+  ]]--
   -- TODO 7: Comment all the code of the TODO 2 and use the ballX and ballY variables to draw the ball
   love.graphics.circle("fill",ballX,ballY,5.0)
   -- TODO 11: Comment all the code of the TODO 3 and use the playerX, playerY, cpuX and cpuY variables to draw the player and cpu paddles
   love.graphics.rectangle( "fill", playerX, playerY, -5, 25 )
   love.graphics.rectangle( "fill", cpuX, cpuY, -5, 25 )
   -- TODO 22: Comment all the code of the TODO 4 and use the playerPoints and cpuPOints variables to draw the points
+  love.graphics.print(playerPoints,(w/4),20)
+  love.graphics.print(cpuPoints,(3*((w/4))),20)
 end
