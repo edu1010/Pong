@@ -51,9 +51,9 @@ function love.update(dt)
   
   -- TODO 13: Move the player paddle getting the up and down arrows keys of the keyboard using the variable paddleSpeed
   if love.keyboard.isDown("up") then
-    playerY = playerY +1 *paddleSpeed
-  elseif love.keyboard.isDown("down") then
     playerY = playerY -1 *paddleSpeed
+  elseif love.keyboard.isDown("down") then
+    playerY = playerY +1 *paddleSpeed
   end
   -- TODO 14: Detect the ball collision with the player paddle and make it bounce
   if colision(playerX,playerY)then
@@ -63,7 +63,7 @@ function love.update(dt)
  
   -- TODO 15: Detect the ball collision with the cpu paddle and make it bounce
   if colision(cpuX,cpuY)then
-   -- ballSpeed=-ballSpeed
+    --ballSpeed=-ballSpeed
     ballAngle= math.atan(ballY/-ballX)+math.rad(180)
   end
   -- TODO 25: Add the needed code at TODO 19 to make the ball quicker at paddle collision
