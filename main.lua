@@ -99,7 +99,7 @@ function love.update(dt)
   -- TODO 20: Detect the ball collision with the top and bottom of the field and make it bounce
   if colisionParedes() then
     print("Entro")
-    ballAngle= math.rad(180)-ballAngle
+    ballAngle= ballAngle + math.rad(180)
     end
   -- TODO 26: Add the needed code at TODO 23 to reset the ball speed
   -- TODO 23: Detect the ball collision with the player and cpu sides, increse the points accordingly and reset the ball
