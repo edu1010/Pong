@@ -19,7 +19,7 @@ function love.load(arg)
   ballX = w/2
   ballY = h/2
   -- TODO 8: Initialize the ball speed for going to the left
-  ballSpeed=-50
+  --ballSpeed=-50
   -- TODO 10: Initialize the player and cpu paddles position
   playerX = w-w+100
   playerY = h/2
@@ -28,9 +28,9 @@ function love.load(arg)
   -- TODO 12: Initialize the paddle speed
   paddleSpeed = 2
   -- TODO 16: Initialize the ball angle
-  ballAngle=math.rad(0)
+  ballAngle=math.rad(190)
   -- TODO 18: Comment all the code of the TODO 8 and initialize the ball speed without sign
-  
+  ballSpeed=50
   -- TODO 21: Initialize the player and cpu points variables
 end
 
@@ -57,7 +57,8 @@ function love.update(dt)
   end
   -- TODO 14: Detect the ball collision with the player paddle and make it bounce
   if colision(playerX,playerY)then
-    ballAngle= math.atan(ballY/-ballX)+math.rad(180)
+    --ballSpeed=-ballSpeed
+    ballAngle= math.rad(180)-ballAngle
     print(ballAngle)
   end
  
