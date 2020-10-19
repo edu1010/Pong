@@ -4,7 +4,7 @@ local ballX, ballY -- Variables to store the position of the ball in the screen 
 local ballSpeed -- Variable to store the ball speed (Uncomment at the start of TODO 8)
 local playerX, playerY, cpuX, cpuY -- Variables to store the position of the player and cpu paddle (Uncomment at the start of TODO 10)
 local paddleSpeed -- Variable to store the paddle speed (Uncomment at the start of TODO 12)
---local ballAngle -- Variable to estore the ball movement angle (Uncomment at the start of TODO 16)
+local ballAngle -- Variable to estore the ball movement angle (Uncomment at the start of TODO 16)
 --local playerPoints, cpuPoints -- Variable to store the player and cpu points (Uncomment at the start of TODO 21)
 
 function love.load(arg)
@@ -28,7 +28,7 @@ function love.load(arg)
   -- TODO 12: Initialize the paddle speed
   paddleSpeed = 2
   -- TODO 16: Initialize the ball angle
-  
+  ballAngle=math.rad(0)
   -- TODO 18: Comment all the code of the TODO 8 and initialize the ball speed without sign
   
   -- TODO 21: Initialize the player and cpu points variables
@@ -43,9 +43,11 @@ end
 
 function love.update(dt)
   -- TODO 9: Make the ball move using the ballSpeed variable
-  ballX=ballX+ballSpeed*dt
+  --ballX=ballX+ballSpeed*dt
   
   -- TODO 17: Comment all the code of the TODO 9 and make the ball move using the ballAngle variable
+  ballX= ballX+math.cos(ballAngle)*ballSpeed*dt
+  ballY= ballY+math.sin(ballAngle)*ballSpeed*dt
   
   -- TODO 13: Move the player paddle getting the up and down arrows keys of the keyboard using the variable paddleSpeed
   if love.keyboard.isDown("up") then
