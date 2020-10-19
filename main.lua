@@ -55,6 +55,18 @@ function colisionParedes()
   return pared
 end
 
+function colisionPorteria()
+  local porteria = false
+  if ballX+5<0 or ballX+5>w then
+    porteria = true
+    if ballX+5<0 then
+      cpuPoints = cpuPoints + 1
+    elseif ballX+5>h then
+      playerPoints = playerPoints + 1
+      end
+  end
+  return porteria
+  end
 
 function love.update(dt)
   -- TODO 9: Make the ball move using the ballSpeed variable
@@ -102,6 +114,10 @@ function love.update(dt)
     end
   -- TODO 26: Add the needed code at TODO 23 to reset the ball speed
   -- TODO 23: Detect the ball collision with the player and cpu sides, increse the points accordingly and reset the ball
+  if colisionPorteria() then
+    ballX = w/2
+    ballY = h/2
+    end
   
   -- TODO 24: Make the cpu paddle move to get the ball
 end
