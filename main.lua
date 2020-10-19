@@ -28,7 +28,7 @@ function love.load(arg)
   -- TODO 12: Initialize the paddle speed
   paddleSpeed = 2
   -- TODO 16: Initialize the ball angle
-  ballAngle=math.rad(190)
+  ballAngle=math.rad(-90)
   -- TODO 18: Comment all the code of the TODO 8 and initialize the ball speed without sign
   ballSpeed=50
   -- TODO 21: Initialize the player and cpu points variables
@@ -38,6 +38,14 @@ function colision(rectX, rectY)
   DeltaX = ballX - math.max(rectX, math.min(ballX, rectX + 10));
   DeltaY = ballY - math.max(rectY, math.min(ballY, rectY + 50));
   return (DeltaX * DeltaX + DeltaY * DeltaY) < (5 * 5);
+  
+end
+
+
+function colisionPard(rectX, rectY)
+  DeltaX = ballX - math.max(w, math.min(ballX, w));
+  DeltaY = ballY - math.max(h, math.min(ballY, h));
+  return (DeltaX * DeltaX + DeltaY * DeltaY) < (5);
   
 end
 
