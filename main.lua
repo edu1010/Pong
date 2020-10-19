@@ -30,7 +30,7 @@ function love.load(arg)
   -- TODO 16: Initialize the ball angle
 
   ballAngle=math.rad(270)
->>>>>>> 50b2005fa95bc6d52a964a8942411858d4035d5d
+
   -- TODO 18: Comment all the code of the TODO 8 and initialize the ball speed without sign
   ballSpeed=100
   -- TODO 21: Initialize the player and cpu points variables
