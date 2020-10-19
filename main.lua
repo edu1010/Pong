@@ -28,17 +28,25 @@ function love.load(arg)
   -- TODO 12: Initialize the paddle speed
   paddleSpeed = 2
   -- TODO 16: Initialize the ball angle
-  ballAngle=math.rad(-90)
+
+  ballAngle=math.rad(270)
+>>>>>>> 50b2005fa95bc6d52a964a8942411858d4035d5d
   -- TODO 18: Comment all the code of the TODO 8 and initialize the ball speed without sign
-  ballSpeed=50
+  ballSpeed=100
   -- TODO 21: Initialize the player and cpu points variables
 end
 
 function colision(rectX, rectY)
-  DeltaX = ballX - math.max(rectX, math.min(ballX, rectX + 10));
-  DeltaY = ballY - math.max(rectY, math.min(ballY, rectY + 50));
-  return (DeltaX * DeltaX + DeltaY * DeltaY) < (5 * 5);
-  
+  DeltaX = ballX - math.max(rectX, math.min(ballX, rectX + 10))
+  DeltaY = ballY - math.max(rectY, math.min(ballY, rectY + 50))
+  return (DeltaX * DeltaX + DeltaY * DeltaY) < (5 * 5)
+end
+function colisionParedes()
+  local pared = false
+  if(ballY+5<0 or ballY+5>h)then
+    pared = true
+    end
+  return pared
 end
 
 
@@ -85,11 +93,14 @@ function love.update(dt)
      end
   
      if colision(cpuX,cpuY)then
-      ballAngle= math.atan(ballY/-ballX)+math.rad(180)
+      ballAngle= math.rad(180)-ballAngle
      end
   
   -- TODO 20: Detect the ball collision with the top and bottom of the field and make it bounce
-  
+  if colisionParedes() then
+    print("Entro")
+    ballAngle= math.rad(180)-ballAngle
+    end
   -- TODO 26: Add the needed code at TODO 23 to reset the ball speed
   -- TODO 23: Detect the ball collision with the player and cpu sides, increse the points accordingly and reset the ball
   
