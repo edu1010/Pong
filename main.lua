@@ -57,7 +57,7 @@ function love.update(dt)
   end
   -- TODO 14: Detect the ball collision with the player paddle and make it bounce
   if colision(playerX,playerY)then
-    ballAngle= math.atan(ballY/-ballX)+math.rad(180)
+    ballAngle= math.atan(playerX/playerY)+math.rad(180)
     print(ballAngle)
   end
  
