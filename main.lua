@@ -109,10 +109,12 @@ function love.update(dt)
       timerPaddle = 0.0
       ballAngle= math.rad(180)-ballAngle
       print(ballAngle)
+      ballSpeed=ballSpeed+20
      end
   
-     if colision(cpuX,cpuY)then
+     if colision(cpuX,cpuY) and timerPaddle >= 2.0 then
       ballAngle= math.rad(180)-ballAngle
+      ballSpeed=ballSpeed+20
      end
   
   -- TODO 20: Detect the ball collision with the top and bottom of the field and make it bounce
@@ -127,6 +129,7 @@ function love.update(dt)
   if colisionPorteria() then
     ballX = w/2
     ballY = h/2
+    ballSpeed = 100
     end
   
   -- TODO 24: Make the cpu paddle move to get the ball
