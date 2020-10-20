@@ -6,6 +6,8 @@ local playerX, playerY, cpuX, cpuY -- Variables to store the position of the pla
 local paddleSpeed -- Variable to store the paddle speed (Uncomment at the start of TODO 12)
 local ballAngle -- Variable to estore the ball movement angle (Uncomment at the start of TODO 16)
 local playerPoints, cpuPoints -- Variable to store the player and cpu points (Uncomment at the start of TODO 21)
+local timer --Timers to correct moments when the ball loops after collision with floor
+local timerPaddle
 
 function love.load(arg)
   if arg[#arg] == "-debug" then require("mobdebug").start() end -- Enable the debugging with ZeroBrane Studio
@@ -35,6 +37,9 @@ function love.load(arg)
   -- TODO 21: Initialize the player and cpu points variables
   playerPoints = 0
   cpuPoints = 0
+  --Timers to correct moments when the ball loops
+  timer = 2.0
+  timerPaddle=2.0
 end
 
 function colision(rectX, rectY)
@@ -44,13 +49,13 @@ function colision(rectX, rectY)
 end
 function colisionParedes()
   local pared = false
-  if ballY+5<0 or ballY+5>h then
+  if ballY+5<0 then
     pared = true
-    if ballY+5<0 then
-      ballY= ballY+5
-    elseif ballY+5>h then
-      ballY= ballY-5
-      end
+    ballY= ballY+15
+    end
+  if ballY+5>h then
+    pared = true
+    ballY= ballY-15
   end
   return pared
 end
@@ -69,6 +74,8 @@ function colisionPorteria()
   end
 
 function love.update(dt)
+  timer=timer+dt
+  timerPaddle=timerPaddle+dt
   -- TODO 9: Make the ball move using the ballSpeed variable
   --ballX=ballX+ballSpeed*dt
   
@@ -98,7 +105,8 @@ function love.update(dt)
   ]]--
   -- TODO 25: Add the needed code at TODO 19 to make the ball quicker at paddle collision
   -- TODO 19: Comment all the code of the TODO 14 and TODO 15 and make it bounce using the new ball angle
-     if colision(playerX,playerY)then
+     if colision(playerX,playerY) and timerPaddle >= 2.0 then
+      timerPaddle = 0.0
       ballAngle= math.rad(180)-ballAngle
       print(ballAngle)
      end
@@ -108,10 +116,12 @@ function love.update(dt)
      end
   
   -- TODO 20: Detect the ball collision with the top and bottom of the field and make it bounce
-  if colisionParedes() then
+  if colisionParedes() and timer >= 2.0 then
     print("Entro")
-    ballAngle= ballAngle + math.rad(45)
-    end
+    timer = 0.0
+    ballAngle= math.rad(25) - ballAngle  
+  end
+  
   -- TODO 26: Add the needed code at TODO 23 to reset the ball speed
   -- TODO 23: Detect the ball collision with the player and cpu sides, increse the points accordingly and reset the ball
   if colisionPorteria() then
@@ -121,9 +131,9 @@ function love.update(dt)
   
   -- TODO 24: Make the cpu paddle move to get the ball
   if(cpuY<ballY)then
-  cpuY = cpuY+1 * paddleSpeed *dt
-elseif(cpuY>ballY)then
-  cpuY = cpuY-1 * paddleSpeed *dt
+    cpuY = cpuY+1 * paddleSpeed *dt
+  elseif(cpuY>ballY)then
+    cpuY = cpuY-1 * paddleSpeed *dt
   end
 end
 
