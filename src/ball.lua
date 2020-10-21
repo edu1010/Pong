@@ -1,3 +1,4 @@
+local Object =Object or require "Object"
 ball = Object:extend()
 
 local ballX, ballY -- Variables to store the position of the ball in the screen 

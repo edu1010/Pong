@@ -1,3 +1,4 @@
+local Object =Object or require "Object"
 paddle = Object:extend()
 
 local paddleX
