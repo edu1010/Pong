@@ -10,10 +10,17 @@ local timer --Timers to correct moments when the ball loops after collision with
 local timerPaddle
 local Subir
 
+local b
+
 function love.load(arg)
   if arg[#arg] == "-debug" then require("mobdebug").start() end -- Enable the debugging with ZeroBrane Studio
   
+  Object = require "lib/classic"
+  require "src/ball"
+  
   w, h = love.graphics.getDimensions() -- Get the screen width and height
+  
+  b = ball(w/2,h/2)
   
   -- TODO 5: Load the font to use in the game and set it
   font = love.graphics.newFont( "pong.ttf",50)
@@ -76,6 +83,7 @@ function colisionPorteria()
   end
 
 function love.update(dt)
+  b:update(dt)
   timer=timer+dt
   timerPaddle=timerPaddle+dt
   -- TODO 9: Make the ball move using the ballSpeed variable
@@ -155,6 +163,7 @@ function love.update(dt)
 end
 
 function love.draw()
+  b:draw()
   -- TODO 1: Draw the center of the field
   
   love.graphics.line( w/2, 0,w/2,h)
