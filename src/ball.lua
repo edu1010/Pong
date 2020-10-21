@@ -28,8 +28,8 @@ end
 
 
 function colision(rectX, rectY)
-  DeltaX = this.ballX - math.max(rectX, math.min(this.ballX, rectX + 10))
-  DeltaY = this.ballY - math.max(rectY, math.min(this.ballY, rectY + 50))
+  DeltaX = self.ballX - math.max(rectX, math.min(self.ballX, rectX + 10))
+  DeltaY = self.ballY - math.max(rectY, math.min(self.ballY, rectY + 50))
   return (DeltaX * DeltaX + DeltaY * DeltaY) < (5 * 5)
 end
 
@@ -37,22 +37,22 @@ function colisionParedes()
   local pared = false
   if this.ballY+5<0 then
     pared = true
-    this.ballY = this.ballY+15
+    self.ballY = self.ballY+15
     end
   if this.ballY+5>h then
     pared = true
-    this.ballY = this.ballY-15
+    self.ballY = self.ballY-15
   end
   return pared
 end
 
 function colisionPorteria()
   local porteria = false
-  if this.ballX+5<0 or this.ballX+5>w then
+  if self.ballX+5<0 or self.ballX+5>w then
     porteria = true
-    if this.ballX+5<0 then
+    if self.ballX+5<0 then
       cpuPoints = cpuPoints + 1
-    elseif this.ballX+5>h then
+    elseif self.ballX+5>h then
       playerPoints = playerPoints + 1
     end
   end

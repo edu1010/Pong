@@ -9,16 +9,14 @@ function paddle:new(player,x,y)
   self.paddleX = x
   self.paddleY = y
   self.paddleSpeed = 120
-  self.player = player
+  self.player = player or nil
 end
 
-
 function paddle:update(dt)
- 
  if player then
    MovePlayer()
  else
-   cpu
+   cpu()
  end
 end
 function MovePlayer()
@@ -30,18 +28,18 @@ function MovePlayer()
 end
 
 function cpu()
-  if math.abs(cpuY - ballY) < 20 then --Continue
-    --cpuY = cpuY-1 * paddleSpeed *dt
+  if math.abs(paddleY - ballY) < 20 then --Continue
+    self.paddleY = self.paddleY-1 * paddleSpeed *dt
   elseif (ballY > cpuY+20) then --Down
     subir = false
-    --cpuY = cpuY+1 * paddleSpeed *dt
+    self.paddleY = self.paddleY+1 * paddleSpeed *dt
   else --Up
     subir = true
   end
   
   if(subir)then
-    cpuY = cpuY-1 * paddleSpeed *dt
+    self.paddleY = paddleY-1 * paddleSpeed *dt
   else
-    cpuY = cpuY+1 * paddleSpeed *dt
+    self.paddleY = paddleY+1 * paddleSpeed *dt
   end
 end
