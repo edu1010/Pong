@@ -8,6 +8,7 @@ local ballAngle -- Variable to estore the ball movement angle (Uncomment at the 
 local playerPoints, cpuPoints -- Variable to store the player and cpu points (Uncomment at the start of TODO 21)
 local timer --Timers to correct moments when the ball loops after collision with floor
 local timerPaddle
+local Subir
 
 function love.load(arg)
   if arg[#arg] == "-debug" then require("mobdebug").start() end -- Enable the debugging with ZeroBrane Studio
@@ -40,6 +41,7 @@ function love.load(arg)
   --Timers to correct moments when the ball loops
   timer = 2.0
   timerPaddle=2.0
+  subir=true
 end
 
 function colision(rectX, rectY)
@@ -130,14 +132,26 @@ function love.update(dt)
     ballX = w/2
     ballY = h/2
     ballSpeed = 100
+    ballAngle = math.rad(math.random(180,210))
     end
   
   -- TODO 24: Make the cpu paddle move to get the ball
-  if(cpuY<ballY)then
-    cpuY = cpuY+1 * paddleSpeed *dt
-  elseif(cpuY>ballY)then
-    cpuY = cpuY-1 * paddleSpeed *dt
+  if math.abs(cpuY - ballY) < 20 then --Continue
+    --cpuY = cpuY-1 * paddleSpeed *dt
+  elseif (ballY > cpuY+20) then --Down
+    subir = false
+    --cpuY = cpuY+1 * paddleSpeed *dt
+  else --Up
+    subir = true
   end
+  
+  if(subir)then
+    cpuY = cpuY-1 * paddleSpeed *dt
+  else
+    cpuY = cpuY+1 * paddleSpeed *dt
+  end
+  
+    
 end
 
 function love.draw()
