@@ -1,4 +1,4 @@
-local Object =Object or require "Object"
+local Object = Object or require "lib/Classic"
 ball = Object:extend()
 
 local ballX, ballY -- Variables to store the position of the ball in the screen 
@@ -19,8 +19,8 @@ function ball:update(dt, paddle)
   self.ballX= self.ballX + math.cos(self.ballAngle) * self.ballSpeed * dt
   self.ballY= self.ballY + math.sin(self.ballAngle) * self.ballSpeed * dt
   
-  colision(paddle.paddleX, paddle.paddleY)
-  colisionParedes()
+  --colision(paddle.paddleX, paddle.paddleY)
+  --colisionParedes()
   
 end
 

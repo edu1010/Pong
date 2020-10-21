@@ -1,4 +1,4 @@
-local Object =Object or require "Object"
+local Object = Object or require "lib/Classic"
 paddle = Object:extend()
 
 local paddleX
@@ -10,25 +10,30 @@ function paddle:new(player,x,y)
   self.paddleX = x
   self.paddleY = y
   self.paddleSpeed = 120
-  self.player = player or nil
+  self.player = player or true
 end
 
-function paddle:update(dt, ball)
+function paddle:update(player,dt, ball)
  if player then
-   --MovePlayer()
+   MovePlayer(self,dt)
  else
-   --cpu(ball)
+   cpu(self,ball,dt)
  end
 end
-function MovePlayer()
+function paddle:draw()
+  print( "DRAW",self.paddleY)
+    love.graphics.rectangle( "fill", self.paddleX, self.paddleY, -5, 25 )
+end
+function MovePlayer(self,dt)
+  print( "UPDATE",self.paddleY)
   if love.keyboard.isDown("up") then
-    self.playerY = self.playerY -1 *self.paddleSpeed *dt
+    self.paddleY = self.paddleY -1 * self.paddleSpeed *dt
   elseif love.keyboard.isDown("down") then
-    self.playerY = self.playerY +1 *self.paddleSpeed *dt
+    self.paddleY= self.paddleY +1 * self.paddleSpeed  *dt
   end
 end
 
-function cpu(ball)
+function cpu(self,ball,dt)
   if math.abs(self.paddleY - ball.ballY) < 20 then --Continue
     self.paddleY = self.paddleY-1 * self.paddleSpeed *dt
   elseif (ball.ballY > self.paddleY+20) then --Down
