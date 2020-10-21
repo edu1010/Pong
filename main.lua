@@ -99,21 +99,7 @@ function love.update(dt)
   elseif love.keyboard.isDown("down") then
     playerY = playerY +1 *paddleSpeed *dt
   end
-  --[[
-  -- TODO 14: Detect the ball collision with the player paddle and make it bounce
-  if colision(playerX,playerY)then
-    --ballSpeed=-ballSpeed
-    ballAngle= math.rad(180)-ballAngle
-    print(ballAngle)
-  end
- 
-  -- TODO 15: Detect the ball collision with the cpu paddle and make it bounce
-  if colision(cpuX,cpuY)then
-    ballSpeed=-ballSpeed
-    ballAngle= math.atan(ballY/-ballX)+math.rad(180)
-  end
-  ]]--
-  -- TODO 25: Add the needed code at TODO 19 to make the ball quicker at paddle collision
+  
   -- TODO 19: Comment all the code of the TODO 14 and TODO 15 and make it bounce using the new ball angle
      if colision(playerX,playerY) and timerPaddle >= 2.0 then
       timerPaddle = 0.0

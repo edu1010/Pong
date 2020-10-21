@@ -1,3 +1,4 @@
+local Object =Object or require "Object"
 paddle = Object:extend()
 
 local paddleX
@@ -18,7 +19,7 @@ function paddle:update(dt)
  if player then
    MovePlayer()
  else
-   cpu
+   cpu()
  end
 end
 function MovePlayer()
