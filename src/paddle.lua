@@ -13,34 +13,34 @@ function paddle:new(player,x,y)
   self.player = player or nil
 end
 
-function paddle:update(dt)
+function paddle:update(dt, ball)
  if player then
-   MovePlayer()
+   --MovePlayer()
  else
-   cpu()
+   --cpu(ball)
  end
 end
 function MovePlayer()
   if love.keyboard.isDown("up") then
-    playerY = playerY -1 *paddleSpeed *dt
+    self.playerY = self.playerY -1 *self.paddleSpeed *dt
   elseif love.keyboard.isDown("down") then
-    playerY = playerY +1 *paddleSpeed *dt
+    self.playerY = self.playerY +1 *self.paddleSpeed *dt
   end
 end
 
-function cpu()
-  if math.abs(paddleY - ballY) < 20 then --Continue
-    self.paddleY = self.paddleY-1 * paddleSpeed *dt
-  elseif (ballY > cpuY+20) then --Down
+function cpu(ball)
+  if math.abs(self.paddleY - ball.ballY) < 20 then --Continue
+    self.paddleY = self.paddleY-1 * self.paddleSpeed *dt
+  elseif (ball.ballY > self.paddleY+20) then --Down
     subir = false
-    self.paddleY = self.paddleY+1 * paddleSpeed *dt
+    self.paddleY = self.paddleY+1 * self.paddleSpeed *dt
   else --Up
     subir = true
   end
   
   if(subir)then
-    self.paddleY = paddleY-1 * paddleSpeed *dt
+    self.paddleY = self.paddleY-1 * self.paddleSpeed *dt
   else
-    self.paddleY = paddleY+1 * paddleSpeed *dt
+    self.paddleY = self.paddleY+1 * self.paddleSpeed *dt
   end
 end

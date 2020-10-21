@@ -14,18 +14,19 @@ end
 
 
 
-function ball:update(dt)
+function ball:update(dt, paddle)
  
   self.ballX= self.ballX + math.cos(self.ballAngle) * self.ballSpeed * dt
   self.ballY= self.ballY + math.sin(self.ballAngle) * self.ballSpeed * dt
+  
+  colision(paddle.paddleX, paddle.paddleY)
+  colisionParedes()
   
 end
 
 function ball:draw()
   love.graphics.circle("fill",self.ballX,self.ballY,5.0)
 end
-
-
 
 
 function colision(rectX, rectY)
@@ -36,11 +37,11 @@ end
 
 function colisionParedes()
   local pared = false
-  if this.ballY+5<0 then
+  if self.ballY+5<0 then
     pared = true
     self.ballY = self.ballY+15
     end
-  if this.ballY+5>h then
+  if self.ballY+5>h then
     pared = true
     self.ballY = self.ballY-15
   end

@@ -1,4 +1,7 @@
 local w, h -- Variables to store the screen width and height
+local Object = require "lib/classic"
+require "src/ball"
+require "src/paddle"
 
 local ballX, ballY -- Variables to store the position of the ball in the screen (Uncomment at the start of TODO 6)
 local ballSpeed -- Variable to store the ball speed (Uncomment at the start of TODO 8)
@@ -15,9 +18,8 @@ local b
 function love.load(arg)
   if arg[#arg] == "-debug" then require("mobdebug").start() end -- Enable the debugging with ZeroBrane Studio
   
-  Object = require "lib/classic"
-  require "src/ball"
-  require "src/paddle"
+  
+  
   
   w, h = love.graphics.getDimensions() -- Get the screen width and height
   
@@ -85,8 +87,8 @@ function colisionPorteria()
   end
 
 function love.update(dt)
-  b:update(dt)
-  c:update(dt)
+  b:update(dt, c)
+  c:update(dt, b)
   
   timer=timer+dt
   timerPaddle=timerPaddle+dt
