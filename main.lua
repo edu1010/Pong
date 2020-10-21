@@ -40,7 +40,7 @@ function love.load(arg)
   timer = 2.0
   timerPaddle=2.0
   subir=true
-   b = ball(w/2,h/2)
+   b = ball(w/2,h/2,h)
   p = paddle(true,w-w+100,h/2)
   c = paddle(true,w-100,h/2)
   
