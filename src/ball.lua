@@ -77,12 +77,11 @@ end
 
 function colisionParedes(self)
   local pared = false
-  if self.ballY+5<0 then
+  if self.ballY+5 < 0 then
     pared = true
     self.ballY = self.ballY+15
   end
-  print(self.h)
-  if self.ballY+5>self.h then
+  if self.ballY+5 > self.h then
     pared = true
     self.ballY = self.ballY-15
   end
