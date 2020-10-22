@@ -66,6 +66,6 @@ function love.draw()
   b:draw()
   p:draw()
   c:draw()
-  s:draw(w,h,p,c)
+  s:draw(w,h)
   
 end

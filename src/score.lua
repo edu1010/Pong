@@ -17,10 +17,10 @@ function score:update(dt)
   
 end
 
-function score:draw(w,h,player,cpu)
+function score:draw(w,h)
   love.graphics.line( w/2, 0,w/2,h)
-  love.graphics.print(player.playerPoints,(w/4),20)
-  love.graphics.print(cpu.cpuPoints,(3*((w/4))),20)
+  love.graphics.print(self.playerPoints,(w/4),20)
+  love.graphics.print(self.cpuPoints,(3*((w/4))),20)
 end
 
   
