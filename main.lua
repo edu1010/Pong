@@ -2,6 +2,7 @@ local w, h -- Variables to store the screen width and height
 local Object = require "lib/classic"
 require "src/ball"
 require "src/paddle"
+require "src/score"
 
 local ballX, ballY -- Variables to store the position of the ball in the screen (Uncomment at the start of TODO 6)
 local ballSpeed -- Variable to store the ball speed (Uncomment at the start of TODO 8)
@@ -16,6 +17,7 @@ local Subir
 local b --Ball
 local p --Player
 local c --Cpu
+local s --Score
 
 function love.load(arg)
   if arg[#arg] == "-debug" then require("mobdebug").start() end -- Enable the debugging with ZeroBrane Studio
@@ -40,17 +42,19 @@ function love.load(arg)
   timer = 2.0
   timerPaddle=2.0
   subir=true
-   b = ball(w/2,h/2,h)
+  b = ball(w/2,h/2,h,w)
   p = paddle(true,w-w+100,h/2)
   c = paddle(true,w-100,h/2)
+  s = score()
   
 end
 
 
 function love.update(dt)
-  b:update(dt, p,c)
+  b:update(dt, p,c,s)
   p:update(true,dt, b)
   c:update(false,dt, b)
+  s:update()
   
   timer=timer+dt
   timerPaddle=timerPaddle+dt
@@ -62,5 +66,6 @@ function love.draw()
   b:draw()
   p:draw()
   c:draw()
+  s:draw(w,h,p,c)
   
 end

@@ -2,25 +2,29 @@ local Object = Object or require "lib/Classic"
 ball = Object:extend()
 
 local ballX, ballY -- Variables to store the position of the ball in the screen 
+local ballXo, ballYo -- Variables to store the position of the ball in the screen in origin
 local ballSpeed
 local ballAngle
 local h
 local timer
 local timerPaddle
 
-function ball:new(x,y,h)
+function ball:new(x,y,h,w)
   self.ballX = x
+  self.ballXo = x
   self.ballY = y
+  self.ballYo = y
   self.ballSpeed = 100
   self.ballAngle = math.rad(210)
   self.h = h
+  self.w = w
   self.timer = 2.0
   self.timerPaddle = 2.0
 end
 
 
 
-function ball:update(dt, player,cpu)
+function ball:update(dt, player,cpu,score)
   
   self.timer=self.timer+dt
   self.timerPaddle=self.timerPaddle+dt
@@ -50,6 +54,14 @@ function ball:update(dt, player,cpu)
     self.ballAngle= math.rad(25) - self.ballAngle  
   end
   
+  if colisionPorteria(self,score) then
+    self.ballX = self.ballXo
+    self.ballY = self.ballYo
+    self.ballSpeed = 100
+    self.ballAngle = math.rad(math.random(180,210))
+  end
+  
+  
 end
 
 function ball:draw()
@@ -77,14 +89,14 @@ function colisionParedes(self)
   return pared
 end
 
-function colisionPorteria(self)
+function colisionPorteria(self,score)
   local porteria = false
-  if self.ballX+5<0 or self.ballX+5>w then
+  if self.ballX+5 < 0 or self.ballX+5 > self.w then
     porteria = true
     if self.ballX+5<0 then
-      cpuPoints = cpuPoints + 1
-    elseif self.ballX+5>h then
-      playerPoints = playerPoints + 1
+      score.cpuPoints = score.cpuPoints + 1
+    elseif self.ballX+5 > self.h then
+      score.playerPoints = score.playerPoints + 1
     end
   end
   return porteria
