@@ -53,6 +53,7 @@ function ball:update(dt, player,cpu,score)
      end
   
      if colision(self,cpu.paddleX,cpu.paddleY) and self.timerPaddle >= self.timerMaxValue then
+      self.timerPaddle = 0.0
       self.ballAngle = math.rad(180)-self.ballAngle
       self.ballSpeed = self.ballSpeed + self.speedIncrease
      end
@@ -86,11 +87,11 @@ end
 
 function colisionParedes(self)
   local pared = false
-  if self.ballY+5 < 0 then
+  if self.ballY+5 <= 0 then
     pared = true
     self.ballY = self.ballY+15
   end
-  if self.ballY+5 > self.h then
+  if self.ballY+5 >= self.h then
     pared = true
     self.ballY = self.ballY-15
   end

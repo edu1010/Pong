@@ -35,12 +35,13 @@ end
 
 function cpu(self,ball,dt)
   if math.abs(self.paddleY - ball.ballY) < 20 then --Continue
-    
+    print("Deberia ser igual que el anterior",subir)
   elseif (ball.ballY > self.paddleY+20) then --Down
     subir = false
-    --self.paddleY = self.paddleY+1 * self.paddleSpeed *dt
+    print("Deberia ser bajar",subir)
   else --Up
     subir = true
+    print("Deberia ser subir",subir)
   end
   
   if(subir)then
