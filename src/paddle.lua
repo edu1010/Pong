@@ -5,12 +5,16 @@ local paddleX
 local paddleY
 local paddleSpeed
 local player
+local paddleW 
+local paddleH
 
-function paddle:new(player,x,y)
+function paddle:new(player,x,y,paddleSpeed,paddleW,paddleH)
   self.paddleX = x
   self.paddleY = y
   self.paddleSpeed = 120
   self.player = player or true
+  self.paddleW = paddleW
+  self.paddleH = paddleH
 end
 
 function paddle:update(player,dt, ball)
@@ -22,7 +26,7 @@ function paddle:update(player,dt, ball)
 end
 function paddle:draw()
   
-    love.graphics.rectangle( "fill", self.paddleX, self.paddleY, 5, 25 )
+    love.graphics.rectangle( "fill", self.paddleX, self.paddleY, self.paddleW/2, self.paddleH/2 )
 end
 function MovePlayer(self,dt)
   
@@ -34,14 +38,14 @@ function MovePlayer(self,dt)
 end
 
 function cpu(self,ball,dt)
-  if math.abs(self.paddleY - ball.ballY) < 20 then --Continue
-    print("Deberia ser igual que el anterior",subir)
+  if math.abs((self.paddleY+25) - ball.ballY) < 20 then --Continue
+    
   elseif (ball.ballY > self.paddleY+20) then --Down
     subir = false
-    print("Deberia ser bajar",subir)
+    
   else --Up
     subir = true
-    print("Deberia ser subir",subir)
+    
   end
   
   if(subir)then

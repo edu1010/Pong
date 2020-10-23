@@ -17,8 +17,8 @@ function love.load(arg)
   w, h = love.graphics.getDimensions() -- Get the screen width and height
   
   b = ball(w/2,h/2,h,w,ballSpeed,ballSpeedIncrease,radio,timer,paddleW,paddleH)
-  p = paddle(true,w-w+100,h/2)
-  c = paddle(true,w-100,h/2)
+  p = paddle(true,w-w+100,h/2,paddleSpeed,paddleW,paddleH)
+  c = paddle(true,w-100,h/2,paddleSpeed,paddleW,paddleH)
   s = score()
   
 end

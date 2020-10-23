@@ -5,4 +5,5 @@
  timer = 2.0
  paddleW = 10
  paddleH = 50
+ paddleSpeed = 120
  

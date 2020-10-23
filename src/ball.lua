@@ -58,10 +58,11 @@ function ball:update(dt, player,cpu,score)
       self.ballSpeed = self.ballSpeed + self.speedIncrease
      end
   
-  -- TODO 20: Detect the ball collision with the top and bottom of the field and make it bounce
+  
   if colisionParedes(self) and self.timer >= self.timerMaxValue then
     self.timer = 0.0
     self.ballAngle= math.rad(25) - self.ballAngle  
+    print(math.deg(self.ballAngle))
   end
   
   if colisionPorteria(self,score) then
@@ -89,11 +90,11 @@ function colisionParedes(self)
   local pared = false
   if self.ballY+5 <= 0 then
     pared = true
-    self.ballY = self.ballY+15
+    self.ballY = self.ballY+10
   end
   if self.ballY+5 >= self.h then
     pared = true
-    self.ballY = self.ballY-15
+    self.ballY = self.ballY-10
   end
   return pared
 end
