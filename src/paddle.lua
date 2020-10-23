@@ -21,11 +21,11 @@ function paddle:update(player,dt, ball)
  end
 end
 function paddle:draw()
-  print( "DRAW",self.paddleY)
-    love.graphics.rectangle( "fill", self.paddleX, self.paddleY, -5, 25 )
+  
+    love.graphics.rectangle( "fill", self.paddleX, self.paddleY, 5, 25 )
 end
 function MovePlayer(self,dt)
-  print( "UPDATE",self.paddleY)
+  
   if love.keyboard.isDown("up") then
     self.paddleY = self.paddleY -1 * self.paddleSpeed *dt
   elseif love.keyboard.isDown("down") then
@@ -35,7 +35,7 @@ end
 
 function cpu(self,ball,dt)
   if math.abs(self.paddleY - ball.ballY) < 20 then --Continue
-    self.paddleY = self.paddleY-1 * self.paddleSpeed *dt
+    
   elseif (ball.ballY > self.paddleY+20) then --Down
     subir = false
     self.paddleY = self.paddleY+1 * self.paddleSpeed *dt

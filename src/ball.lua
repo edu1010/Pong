@@ -5,21 +5,27 @@ local ballX, ballY -- Variables to store the position of the ball in the screen
 local ballXo, ballYo -- Variables to store the position of the ball in the screen in origin
 local ballSpeed
 local ballAngle
+local ballRad
 local h
 local timer
 local timerPaddle
+local paddleW 
+local paddleH
 
-function ball:new(x,y,h,w)
+function ball:new(x,y,h,w,speed,rad,timer,paddleW,paddleH)
   self.ballX = x
   self.ballXo = x
   self.ballY = y
   self.ballYo = y
-  self.ballSpeed = 100
+  self.ballSpeed = speed
+  self.ballRad = rad
   self.ballAngle = math.rad(210)
   self.h = h
   self.w = w
-  self.timer = 2.0
-  self.timerPaddle = 2.0
+  self.timer = timer
+  self.timerPaddle = timer
+  self.paddleW = paddleW
+  self.paddleH = paddleH
 end
 
 
@@ -32,8 +38,6 @@ function ball:update(dt, player,cpu,score)
   self.ballX= self.ballX + math.cos(self.ballAngle) * self.ballSpeed * dt
   self.ballY= self.ballY + math.sin(self.ballAngle) * self.ballSpeed * dt
   
-  --colision(paddle.paddleX, paddle.paddleY)
-  --colisionParedes()
   
   if colision(self,player.paddleX,player.paddleY) and self.timerPaddle >= 2.0 then
       self.timerPaddle = 0.0
@@ -49,7 +53,6 @@ function ball:update(dt, player,cpu,score)
   
   -- TODO 20: Detect the ball collision with the top and bottom of the field and make it bounce
   if colisionParedes(self) and self.timer >= 2.0 then
-    print("Entro")
     self.timer = 0.0
     self.ballAngle= math.rad(25) - self.ballAngle  
   end
@@ -65,14 +68,14 @@ function ball:update(dt, player,cpu,score)
 end
 
 function ball:draw()
-  love.graphics.circle("fill",self.ballX,self.ballY,5.0)
+  love.graphics.circle("fill",self.ballX,self.ballY,self.ballRad)
 end
 
 
 function colision(self,rectX, rectY)
-  DeltaX = self.ballX - math.max(rectX, math.min(self.ballX, rectX + 10))
-  DeltaY = self.ballY - math.max(rectY, math.min(self.ballY, rectY + 50))
-  return (DeltaX * DeltaX + DeltaY * DeltaY) < (5 * 5)
+  DeltaX = self.ballX - math.max(rectX, math.min(self.ballX, rectX + self.paddleW))
+  DeltaY = self.ballY - math.max(rectY, math.min(self.ballY, rectY + self.paddleH))
+  return (DeltaX * DeltaX + DeltaY * DeltaY) < (self.ballRad * self.ballRad)
 end
 
 function colisionParedes(self)
@@ -90,11 +93,11 @@ end
 
 function colisionPorteria(self,score)
   local porteria = false
-  if self.ballX+5 < 0 or self.ballX+5 > self.w then
+  if self.ballX+self.ballRad < 0 or self.ballX+self.ballRad > self.w then
     porteria = true
-    if self.ballX+5<0 then
+    if self.ballX + self.ballRad < 0 then
       score.cpuPoints = score.cpuPoints + 1
-    elseif self.ballX+5 > self.h then
+    elseif self.ballX + self.ballRad > self.h then
       score.playerPoints = score.playerPoints + 1
     end
   end
