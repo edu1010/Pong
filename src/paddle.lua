@@ -11,7 +11,7 @@ local paddleH
 function paddle:new(player,x,y,paddleSpeed,paddleW,paddleH)
   self.paddleX = x
   self.paddleY = y
-  self.paddleSpeed = 120
+  self.paddleSpeed = paddleSpeed
   self.player = player or true
   self.paddleW = paddleW
   self.paddleH = paddleH

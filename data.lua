@@ -6,4 +6,7 @@
  paddleW = 10
  paddleH = 50
  paddleSpeed = 120
+ sizeFont = 50
+ scoreH = 20
+ 
  

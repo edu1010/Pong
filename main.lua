@@ -19,7 +19,7 @@ function love.load(arg)
   b = ball(w/2,h/2,h,w,ballSpeed,ballSpeedIncrease,radio,timer,paddleW,paddleH)
   p = paddle(true,w-w+100,h/2,paddleSpeed,paddleW,paddleH)
   c = paddle(true,w-100,h/2,paddleSpeed,paddleW,paddleH)
-  s = score()
+  s = score(sizeFont, scoreH)
   
 end
 
