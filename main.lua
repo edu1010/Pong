@@ -16,7 +16,7 @@ function love.load(arg)
   if arg[#arg] == "-debug" then require("mobdebug").start() end -- Enable the debugging with ZeroBrane Studio
   w, h = love.graphics.getDimensions() -- Get the screen width and height
   
-  b = ball(w/2,h/2,h,w,ballSpeed,radio,timer,paddleW,paddleH)
+  b = ball(w/2,h/2,h,w,ballSpeed,ballSpeedIncrease,radio,timer,paddleW,paddleH)
   p = paddle(true,w-w+100,h/2)
   c = paddle(true,w-100,h/2)
   s = score()

@@ -38,7 +38,7 @@ function cpu(self,ball,dt)
     
   elseif (ball.ballY > self.paddleY+20) then --Down
     subir = false
-    self.paddleY = self.paddleY+1 * self.paddleSpeed *dt
+    --self.paddleY = self.paddleY+1 * self.paddleSpeed *dt
   else --Up
     subir = true
   end

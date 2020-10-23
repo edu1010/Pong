@@ -4,24 +4,30 @@ ball = Object:extend()
 local ballX, ballY -- Variables to store the position of the ball in the screen 
 local ballXo, ballYo -- Variables to store the position of the ball in the screen in origin
 local ballSpeed
+local ballSpeedCopy --To restore the speed
+local speedIncrease --To increase the speed
 local ballAngle
 local ballRad
 local h
+local timerMaxValue --To restart the timer
 local timer
 local timerPaddle
 local paddleW 
 local paddleH
 
-function ball:new(x,y,h,w,speed,rad,timer,paddleW,paddleH)
+function ball:new(x,y,h,w,speed,speedIncrease,rad,timer,paddleW,paddleH)
   self.ballX = x
   self.ballXo = x
   self.ballY = y
   self.ballYo = y
   self.ballSpeed = speed
+  self.ballSpeedCopy = speed
+  self.speedIncrease = speedIncrease
   self.ballRad = rad
   self.ballAngle = math.rad(210)
   self.h = h
   self.w = w
+  self.timerMaxValue = timer
   self.timer = timer
   self.timerPaddle = timer
   self.paddleW = paddleW
@@ -39,20 +45,20 @@ function ball:update(dt, player,cpu,score)
   self.ballY= self.ballY + math.sin(self.ballAngle) * self.ballSpeed * dt
   
   
-  if colision(self,player.paddleX,player.paddleY) and self.timerPaddle >= 2.0 then
+  if colision(self,player.paddleX,player.paddleY) and self.timerPaddle >= self.timerMaxValue then
       self.timerPaddle = 0.0
       self.ballAngle = math.rad(180)-self.ballAngle
       
-      self.ballSpeed = self.ballSpeed+20
+      self.ballSpeed = self.ballSpeed + self.speedIncrease
      end
   
-     if colision(self,cpu.paddleX,cpu.paddleY) and self.timerPaddle >= 2.0 then
+     if colision(self,cpu.paddleX,cpu.paddleY) and self.timerPaddle >= self.timerMaxValue then
       self.ballAngle = math.rad(180)-self.ballAngle
-      self.ballSpeed = self.ballSpeed+20
+      self.ballSpeed = self.ballSpeed + self.speedIncrease
      end
   
   -- TODO 20: Detect the ball collision with the top and bottom of the field and make it bounce
-  if colisionParedes(self) and self.timer >= 2.0 then
+  if colisionParedes(self) and self.timer >= self.timerMaxValue then
     self.timer = 0.0
     self.ballAngle= math.rad(25) - self.ballAngle  
   end
@@ -60,7 +66,7 @@ function ball:update(dt, player,cpu,score)
   if colisionPorteria(self,score) then
     self.ballX = self.ballXo
     self.ballY = self.ballYo
-    self.ballSpeed = 100
+    self.ballSpeed = self.ballSpeedCopy
     self.ballAngle = math.rad(math.random(180,210))
   end
   
