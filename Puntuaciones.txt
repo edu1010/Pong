@@ -3,3 +3,5 @@
 AAA score: 0 Cpu score:3
 AAA score: 1 Cpu score:0
 
+
+ECB score: 0 Cpu score:3
