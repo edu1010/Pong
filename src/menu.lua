@@ -73,6 +73,7 @@ end
 
 function menu:draw()
   --love.graphics.line( self.w/2, 0,self.w/2,h)--
+  love.graphics.print("MENU", self.w/2, self.h/4 + 20,0,1,1,self.fontSize,self.fontSize)
   
   self.startGame = love.graphics.print("Play!",(self.w/2), self.h/2,0,1,1,self.fontSize,self.fontSize/2)
   love.graphics.rectangle( "line", (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2, self.fontSize*2 + 20, self.fontSize)
