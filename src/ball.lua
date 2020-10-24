@@ -14,6 +14,7 @@ local timer
 local timerPaddle
 local paddleW 
 local paddleH
+local musica
 
 function ball:new(x,y,h,w,speed,speedIncrease,rad,timer,paddleW,paddleH)
   self.ballX = x
@@ -36,8 +37,7 @@ end
 
 
 
-function ball:update(dt, player,cpu,score)
-  
+function ball:update(dt, player,cpu,score,sonido)
   self.timer=self.timer+dt
   self.timerPaddle=self.timerPaddle+dt
   
@@ -50,22 +50,24 @@ function ball:update(dt, player,cpu,score)
       self.ballAngle = math.rad(180)-self.ballAngle
       
       self.ballSpeed = self.ballSpeed + self.speedIncrease
+      sonido.sonidoPong:play()
      end
   
      if colision(self,cpu.paddleX,cpu.paddleY) and self.timerPaddle >= self.timerMaxValue then
       self.timerPaddle = 0.0
       self.ballAngle = math.rad(180)-self.ballAngle
       self.ballSpeed = self.ballSpeed + self.speedIncrease
+      sonido.sonidoPong:play()
      end
   
   
-  if colisionParedes(self) and self.timer >= self.timerMaxValue then
+  if colisionParedes(self,sonido) and self.timer >= self.timerMaxValue then
     self.timer = 0.0
     self.ballAngle= math.rad(25) - self.ballAngle  
     print(math.deg(self.ballAngle))
   end
   
-  if colisionPorteria(self,score) then
+  if colisionPorteria(self,score,sonido) then
     self.ballX = self.ballXo
     self.ballY = self.ballYo
     self.ballSpeed = self.ballSpeedCopy
@@ -99,14 +101,16 @@ function colisionParedes(self)
   return pared
 end
 
-function colisionPorteria(self,score)
+function colisionPorteria(self,score,sonido)
   local porteria = false
   if self.ballX+self.ballRad < 0 or self.ballX+self.ballRad > self.w then
     porteria = true
     if self.ballX + self.ballRad < 0 then
       score.cpuPoints = score.cpuPoints + 1
+      sonido.puntoCp:play()
     elseif self.ballX + self.ballRad > self.h then
       score.playerPoints = score.playerPoints + 1
+      sonido.puntoPl:play()
     end
   end
   return porteria
