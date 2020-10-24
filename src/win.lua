@@ -16,5 +16,8 @@ function win:update(dt,g)
 end
 
 function win:draw()
-  love.graphics.print("YOU WIN", (self.winW/2), self.winH-self.winH/2,0,1,1)
+  love.graphics.print("GAME OVER!", (self.winW) - (self.winH + 60) , (self.winH/4),0,2,2)
+  love.graphics.setColor(0,250,0)
+  
+  love.graphics.print("YOU WIN", (self.winW/2) - (self.winH/4 - 20) , (self.winH/2),0,1,1)
 end

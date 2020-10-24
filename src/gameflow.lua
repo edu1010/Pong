@@ -51,7 +51,8 @@ function gameflow:play()
 end
 function gameflow:gameOver(b,score,p,c,m)
   if (self.state == self.gameStates[3]) then
-    resetGame(self,b,score,p,c,m)
+    
+    --resetGame(self,b,score,p,c,m)
     return true
   else
     return false
@@ -75,6 +76,7 @@ end
 function gameflow:siguienteNivel()
   self.state = self.gameStates[2]
 end
+--[[
 function resetGame(self,b,s,p,c,m)
   
   self.timerParitida = self.timerPartidaMax
@@ -86,4 +88,5 @@ function resetGame(self,b,s,p,c,m)
   m.resetMenu()
   print("entro",g.timerParitida)
 end
+]]--
 

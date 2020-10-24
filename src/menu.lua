@@ -31,7 +31,7 @@ function menu:update(dt,gameflow)
       self.canPress = false    
     end
     if colisionExit(self ,x, y, (self.w/2)-self.fontSize,  (self.h - self.fontSize)-self.fontSize/2) and self.canPress  then
-      gameflow.state = gameflow.gameStates[3]
+      love.event.quit(0)
       self.exitGame= love.graphics.setColor(255, 255, 255)
       self.canPress = false   
     end
@@ -73,12 +73,12 @@ end
 
 function menu:draw()
   --love.graphics.line( self.w/2, 0,self.w/2,h)--
-  love.graphics.print("MENU", self.w/2, self.h/4 + 20,0,1,1,self.fontSize,self.fontSize)
+  love.graphics.print("MENU", self.w/2 - 20, self.h/4 + 20,0,2,2,self.fontSize,self.fontSize)
   
   self.startGame = love.graphics.print("Play!",(self.w/2), self.h/2,0,1,1,self.fontSize,self.fontSize/2)
   love.graphics.rectangle( "line", (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2, self.fontSize*2 + 20, self.fontSize)
   
-  self.exitGame =love.graphics.print("EXIT",(self.w/2), self.h - self.fontSize,0,1,1,self.fontSize,self.fontSize/2)
+  self.exitGame = love.graphics.print("EXIT",(self.w/2), self.h - self.fontSize,0,0.5,0.5,self.fontSize,self.fontSize/2)
   love.graphics.rectangle( "line", (self.w/2)-self.fontSize, (self.h-self.fontSize)-self.fontSize/2, self.fontSize*2, self.fontSize)
   
 end

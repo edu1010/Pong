@@ -3,6 +3,7 @@ lose = Object:extend()
 
 local loseW
 local loseH
+
 function lose:new(w,h)
   self.loseW = w
   self.loseH = h
@@ -17,5 +18,8 @@ function lose:update(dt,g)
 end
 
 function lose:draw()
-  love.graphics.print("YOU LOSE", (self.loseW/2), self.loseH-self.loseH/2,0,1,1)
+  love.graphics.print("GAME OVER!", (self.loseW) - (self.loseH + 60) , (self.loseH/4),0,2,2)
+  love.graphics.setColor(250,0,0)
+  
+  love.graphics.print("YOU LOSE", (self.loseW/2) - (self.loseH/4 - 20) , (self.loseH/2),0,1,1)
 end
