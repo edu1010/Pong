@@ -9,6 +9,7 @@ local paddleW
 local paddleH
 
 function paddle:new(player,x,y,paddleSpeed,paddleW,paddleH)
+  
   self.paddleX = x
   self.paddleY = y
   self.paddleSpeed = paddleSpeed
@@ -25,7 +26,7 @@ function paddle:update(player,dt, ball)
  end
 end
 function paddle:draw()
-  
+    
     love.graphics.rectangle( "fill", self.paddleX, self.paddleY, self.paddleW/2, self.paddleH/2 )
 end
 function MovePlayer(self,dt)

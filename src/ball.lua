@@ -15,8 +15,11 @@ local timerPaddle
 local paddleW 
 local paddleH
 local musica
+local sprite
 
 function ball:new(x,y,h,w,speed,speedIncrease,rad,timer,paddleW,paddleH)
+  sprite = love.graphics.newImage("image/ballPongg.png")
+  
   self.ballX = x
   self.ballXo = x
   self.ballY = y
@@ -78,7 +81,7 @@ function ball:update(dt, player,cpu,score,sonido)
 end
 
 function ball:draw()
-  love.graphics.circle("fill",self.ballX,self.ballY,self.ballRad)
+  love.graphics.draw(sprite,self.ballX,self.ballY)
 end
 
 
