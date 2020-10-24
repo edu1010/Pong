@@ -17,8 +17,8 @@ print(love.mouse.getPosition(), love.mouse.isDown( 1 ))
 if love.mouse.isDown(1) then
   local x,y = love.mouse.getPosition()
   print(x,y)
-  if colision(self,x,y,(self.w/2)-self.fontSize,(self.h/2)-self.fontSize/2) then
-    gameflow.state = gameflow.gameStates[2]
+  if colision(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) then
+    gameflow:siguienteNivel()
     
   end
 end

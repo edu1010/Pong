@@ -35,3 +35,6 @@ function gameflow:gameOver()
   end
 end
 
+function gameflow:siguienteNivel()
+  self.state = gameStates[2]
+end
