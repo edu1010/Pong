@@ -4,11 +4,12 @@ gameflow = Object:extend()
 local state
 local gameStates 
 local timerPartida
+local timerPartidaMax --reset timer
 local restar1
-function gameflow:new()
+function gameflow:new(duracion)
   self.gameStates = {"menu","play","gameOver","requestName","win"}
   self.state = self.gameStates[1]
-  self.timerPartida = 60
+  self.timerPartida = duracion
   self.restar1 = 0
 end
 
@@ -48,8 +49,9 @@ function gameflow:play()
     return false
   end
 end
-function gameflow:gameOver()
+function gameflow:gameOver(b,score,p,c,m)
   if (self.state == self.gameStates[3]) then
+    resetGame(self,b,score,p,c,m)
     return true
   else
     return false
@@ -62,8 +64,9 @@ function gameflow:requestName()
     return false
   end
 end
-function gameflow:win()
+function gameflow:win(b,score,p,c,m)
   if (self.state == self.gameStates[5]) then
+    resetGame(self,b,score,p,c,m)
     return true
   else
     return false
@@ -72,3 +75,15 @@ end
 function gameflow:siguienteNivel()
   self.state = self.gameStates[2]
 end
+function resetGame(self,b,s,p,c,m)
+  
+  self.timerParitida = self.timerPartidaMax
+  self.restar1 = 0
+  b.resetBall(b)
+  s.resetScore(s)
+  p.resetPaddle(p)
+  c.resetPaddle(c)
+  m.resetMenu()
+  print("entro",g.timerParitida)
+end
+

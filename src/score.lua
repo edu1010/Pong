@@ -28,4 +28,9 @@ function score:draw(w,h,g)
   love.graphics.print(self.cpuPoints,(3*((w/4))), self.scoreH)
 end
 
+function resetScore(self)
+  self.playerPoints = 0
+  self.cpuPoints =0
+end
+
   

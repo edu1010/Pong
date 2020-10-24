@@ -8,5 +8,6 @@
  paddleSpeed = 120
  sizeFont = 50
  scoreH = 20
+ duracionPartida = 1
  
  

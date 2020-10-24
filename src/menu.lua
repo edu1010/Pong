@@ -81,4 +81,7 @@ function menu:draw()
   love.graphics.rectangle( "line", (self.w/2)-self.fontSize, (self.h-self.fontSize)-self.fontSize/2, self.fontSize*2, self.fontSize)
   
 end
+function resetMenu(self)
+  self.canPress =true
+end
 
