@@ -16,14 +16,22 @@ end
 
 function menu:update(dt,gameflow)
 --print(love.mouse.getPosition(), love.mouse.isDown( 1 ))  
-if love.mouse.isDown(1) then
   local x,y = love.mouse.getPosition()
-  --print(x,y)
-  if colisionPlay(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) and self.canPress  then
-    gameflow.state = gameflow.gameStates[2]
-    self.canPress = false    
-  end
-end
+  if love.mouse.isDown(1) then
+    
+    --print(x,y)
+    if colisionPlay(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) and self.canPress  then
+      gameflow.state = gameflow.gameStates[2]
+      love.graphics.setColor(255, 255, 255)
+      self.canPress = false    
+    end
+  else
+    if colisionPlay(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) then
+      love.graphics.setColor(0, 255, 0)
+    else
+      love.graphics.setColor(255, 255, 255)
+    end
+  end    
 end
 function colisionPlay(self,x,y,rectX, rectY)
   --print(self,x,y,rectX, rectY)
