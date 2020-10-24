@@ -24,33 +24,81 @@ end
 
 
 function requestName:update(dt,g)
-  print("UPDATE",self)
-  print("UPDATE",self.actualChar1)
-  print(self.letra1)
-  print(self)
-  print(self.actualChar1)
+  --del 65 al 90 es de la A a la Z en codigo assic
   if self.actualChar1 == 1 then
     if love.keyboard.isDown("up") then
-      --codigo
-      
-      --del 65 al 90
       if string.byte(self.letra1)+1 >90 then
         self.letra1 = string.char(65)
-      elseif  string.byte(self.letra1)-1 < 65 then
-        self.letra1 = string.char(90)
       else
         self.letra1 = string.char( string.byte(self.letra1)+1)
       end
     elseif love.keyboard.isDown("down") then
+      if  string.byte(self.letra1)-1 < 65 then
+        self.letra1 = string.char(90)
+      else 
       self.letra1 = string.char( string.byte(self.letra1)-1)
+      end
+    end
+    if love.keyboard.isDown("left") then
+      self.actualChar1 = 3
+    end
+    if love.keyboard.isDown("right") then
+      self.actualChar1 = 2
     end
   end
   if love.keyboard.isDown("return") then
     g.state = g.gameStates[2]
   end
+  if self.actualChar2 == 2 then
+  --code
+  if love.keyboard.isDown("up") then
+      --del 65 al 90
+      if string.byte(self.letra2)+1 >90 then
+        self.letra2 = string.char(65)
+      elseif  string.byte(self.letra2)-1 < 65 then
+        self.letra2 = string.char(90)
+      else
+        self.letra2 = string.char( string.byte(self.letra2)+1)
+      end
+      elseif love.keyboard.isDown("down") then
+        self.letra2 = string.char( string.byte(self.letra2)-1)
+      end
+      
+      if love.keyboard.isDown("left") then
+        self.actualChar2 = 1
+      end
+      if love.keyboard.isDown("right") then
+        self.actualChar2 = 3
+      end
+  end
+  if self.actualChar3 == 3 then
+  --code
+  if love.keyboard.isDown("up") then
+      --del 65 al 90
+      if string.byte(self.letra3)+1 > 90 then
+        self.letra3 = string.char(65)
+      elseif  string.byte(self.letra3)-1 < 65 then
+        self.letra3 = string.char(90)
+      else
+        self.letra3 = string.char( string.byte(self.letra3)+1)
+      end
+      elseif love.keyboard.isDown("down") then
+        self.letra3 = string.char( string.byte(self.letra3)-1)
+      end
+      
+      if love.keyboard.isDown("left") then
+        self.actualChar3 = 2
+      end
+      if love.keyboard.isDown("right") then
+        self.actualChar3 = 1
+      end
+  end
 end
+
 
 function requestName:draw()
   love.graphics.print("PON TU NOMBRE", (self.titleW/2), self.titleH-self.titleH/2,0,1,1)
   love.graphics.print(self.letra1,(self.titleW/2),self.titleH-self.titleH/4,0,1,1)
+  love.graphics.print(self.letra2,(self.titleW/2+40),self.titleH-self.titleH/4,0,1,1)
+  love.graphics.print(self.letra2,(self.titleW/2+80),self.titleH-self.titleH/4,0,1,1)
 end
