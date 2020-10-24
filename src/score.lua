@@ -21,8 +21,10 @@ function score:update(dt)
   
 end
 
-function score:draw(w,h)
+function score:draw(w,h,g)
   love.graphics.line( w/2, 0,w/2,h)
+  
+  love.graphics.print("Time:"..g.timerPartida ,(w/2),h- h/4)
   love.graphics.print(self.playerPoints,(w/4), self.scoreH)
   love.graphics.print(self.cpuPoints,(3*((w/4))), self.scoreH)
 end

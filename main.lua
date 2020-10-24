@@ -32,7 +32,7 @@ function love.load(arg)
 end
 
 function love.update(dt)
-  g:update(dt)
+  g:update(dt,s)
   if g:menu() then
     m:update(dt,g)
   end
@@ -55,7 +55,7 @@ function love.draw()
     b:draw()
     p:draw()
     c:draw()
-    s:draw(w,h)
+    s:draw(w,h,g)
     so:draw()
   end
   
