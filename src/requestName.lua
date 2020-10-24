@@ -84,5 +84,5 @@ function requestName:draw()
   love.graphics.print("PON TU NOMBRE", (self.titleW/2), self.titleH-self.titleH/2,0,1,1)
   love.graphics.print(self.letra1,(self.titleW/2),self.titleH-self.titleH/4,0,1,1)
   love.graphics.print(self.letra2,(self.titleW/2+40),self.titleH-self.titleH/4,0,1,1)
-  love.graphics.print(self.letra2,(self.titleW/2+80),self.titleH-self.titleH/4,0,1,1)
+  love.graphics.print(self.letra3,(self.titleW/2+80),self.titleH-self.titleH/4,0,1,1)
 end
