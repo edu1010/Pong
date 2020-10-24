@@ -29,7 +29,7 @@ function paddle:update(player,dt, ball)
 end
 function paddle:draw()
     
-  love.graphics.draw(spritePl, self.paddleX, self.paddleY)
+  love.graphics.draw(self.spritePl, self.paddleX, self.paddleY)
 end
 function MovePlayer(self,dt)
   

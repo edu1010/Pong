@@ -40,7 +40,7 @@ function love.update(dt)
     m:update(dt,g)
   end
   if g:requestName() then 
-    rN:update(dt)
+    rN:update(dt,g)
   end
   if g:play() then
     b:update(dt, p,c,s,so)

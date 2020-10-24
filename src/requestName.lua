@@ -23,7 +23,7 @@ end
 
 
 
-function requestName:update(dt)
+function requestName:update(dt,g)
   print("UPDATE",self)
   print("UPDATE",self.actualChar1)
   print(self.letra1)
@@ -32,13 +32,22 @@ function requestName:update(dt)
   if self.actualChar1 == 1 then
     if love.keyboard.isDown("up") then
       --codigo
-      self.letra1 = string.char( string.byte(self.letra1)+1)
+      
+      --del 65 al 90
+      if string.byte(self.letra1)+1 >90 then
+        self.letra1 = string.char(65)
+      elseif  string.byte(self.letra1)-1 < 65 then
+        self.letra1 = string.char(90)
+      else
+        self.letra1 = string.char( string.byte(self.letra1)+1)
+      end
     elseif love.keyboard.isDown("down") then
       self.letra1 = string.char( string.byte(self.letra1)-1)
     end
   end
-    
-    
+  if love.keyboard.isDown("return") then
+    g.state = g.gameStates[2]
+  end
 end
 
 function requestName:draw()
