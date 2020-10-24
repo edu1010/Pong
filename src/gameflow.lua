@@ -3,14 +3,23 @@ gameflow = Object:extend()
 
 local state
 local gameStates 
-
+local timerPartida
+local restar1
 function gameflow:new()
   self.gameStates = {"menu","play","gameOver"}
   self.state = self.gameStates[1]
-  
+  self.timerPartida = 60
+  self.restar1 = 0
 end
 
 function gameflow:update(dt)
+ if self.state == self.gameStates[2] then
+   self.restar1 = self.restar1+dt
+   if self.restar1 >=1 then
+     self.restar1 = 0
+    self.timerPartida = self.timerPartida -1
+  end
+ end
  
   
 end
