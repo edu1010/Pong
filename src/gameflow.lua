@@ -6,7 +6,7 @@ local gameStates
 local timerPartida
 local restar1
 function gameflow:new()
-  self.gameStates = {"menu","play","gameOver"}
+  self.gameStates = {"menu","play","gameOver","requestName"}
   self.state = self.gameStates[1]
   self.timerPartida = 60
   self.restar1 = 0
@@ -45,6 +45,13 @@ function gameflow:play()
 end
 function gameflow:gameOver()
   if (self.state == self.gameStates[3]) then
+    return true
+  else
+    return false
+  end
+end
+function gameflow:requestName()
+  if (self.state == self.gameStates[4]) then
     return true
   else
     return false

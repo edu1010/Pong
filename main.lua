@@ -6,6 +6,7 @@ require "src/score"
 require "src/sonido"
 require "src/menu"
 require "src/gameflow"
+require "src/requestName"
 require "data"
 
 
@@ -17,6 +18,7 @@ local s --Score
 local m --menu
 local g --gameflow
 local so -- Sonido
+local rN --requestName
 
 function love.load(arg)
   if arg[#arg] == "-debug" then require("mobdebug").start() end -- Enable the debugging with ZeroBrane Studio
@@ -29,12 +31,16 @@ function love.load(arg)
   m = menu(w,h,sizeFont)
   g = gameflow()
   so = sonido()
+  rN = requestName(w,h)
 end
 
 function love.update(dt)
   g:update(dt,s)
   if g:menu() then
     m:update(dt,g)
+  end
+  if g:requestName() then 
+    rN:update(dt)
   end
   if g:play() then
     b:update(dt, p,c,s,so)
@@ -50,6 +56,9 @@ end
 function love.draw()
   if g:menu() then
     m:draw()
+  end
+   if g:requestName() then 
+    rN:draw()
   end
   if g:play() then
     b:draw()

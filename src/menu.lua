@@ -26,7 +26,7 @@ function menu:update(dt,gameflow)
 
   if love.mouse.isDown(1) then
     if colisionPlay(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) and self.canPress  then
-      gameflow.state = gameflow.gameStates[2]
+      gameflow.state = gameflow.gameStates[4]
       self.startGame= love.graphics.setColor(255, 255, 255)
       self.canPress = false    
     end
@@ -53,7 +53,6 @@ end
 function colisionPlay(self,x,y,rectX, rectY)
   --print(self,x,y,rectX, rectY)
   if rectX and x > rectX and x < (rectX + self.fontSize*2) and y > rectY and y < rectY + self.fontSize  then
-    print("colision",self,x,y,rectX, rectY)
     return true 
   else
     return false
@@ -66,7 +65,6 @@ end
 function colisionExit(self,x,y,rectX, rectY)
   --print(self,x,y,rectX, rectY)
      if rectX and x > rectX and x < (rectX + self.fontSize*2) and y > rectY and y < rectY + self.fontSize  then
-    print("colision",self,x,y,rectX, rectY)
     return true 
   else
     return false
