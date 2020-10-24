@@ -33,7 +33,7 @@ function love.load(arg)
   c = paddle(true,w-100,h/2,paddleSpeed,paddleW,paddleH)
   s = score(sizeFont, scoreH)
   m = menu(w,h,sizeFont)
-  g = gameflow()
+  g = gameflow(duracionPartida)
   so = sonido()
   rN = requestName(w,h)
   wi = win(w,h)
@@ -42,6 +42,7 @@ end
 
 function love.update(dt)
   g:update(dt,s,rN)
+  print(g.timerPartida)
   if g:menu() then
     m:update(dt,g)
   end
@@ -55,11 +56,14 @@ function love.update(dt)
     s:update(so)
     so:update()
   end
-  if g:gameOver() then
-    l:update(dt)
+  if g:gameOver(b,s,p,c,m) then
+    l:update(dt,g)
+    print(g)
+  --  g.resetGame(g,b,s,p,c,m)
   end
-  if g:win() then
-    wi:update(dt)
+  if g:win(b,s,p,c,m) then
+    wi:update(dt,g)
+   -- g.resetGame(g,b,s,p,c,m)
   end
   
   

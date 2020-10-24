@@ -10,7 +10,9 @@ end
 
 
 function win:update(dt,g)
-  
+   if love.keyboard.isDown("return") then
+     g.state = g.gameStates[1]
+   end
 end
 
 function win:draw()

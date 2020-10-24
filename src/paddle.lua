@@ -8,12 +8,14 @@ local player
 local paddleW 
 local paddleH
 local spritePl
+local paddleoY 
 
 function paddle:new(player,x,y,paddleSpeed,paddleW,paddleH)
   self.spritePl = love.graphics.newImage("image/paddlePlayer.png")
   
   self.paddleX = x
-  self.paddleY = y
+   self.paddleY = y
+  self.paddleoY = y
   self.paddleSpeed = paddleSpeed
   self.player = player or true
   self.paddleW = paddleW
@@ -56,4 +58,7 @@ function cpu(self,ball,dt)
   else
     self.paddleY = self.paddleY+1 * self.paddleSpeed *dt
   end
+end
+function resetPaddle(self)
+  self.paddleY = self.paddleoY
 end
