@@ -35,7 +35,7 @@ function love.load(arg)
 end
 
 function love.update(dt)
-  g:update(dt,s)
+  g:update(dt,s,rN)
   if g:menu() then
     m:update(dt,g)
   end

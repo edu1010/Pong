@@ -61,6 +61,7 @@ function requestName:update(dt,g)
         self.actualChar = 1
       end
     end
+  self.name = self.letra1..self.letra2..self.letra3
   end
 
 
