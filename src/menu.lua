@@ -25,24 +25,29 @@ function menu:update(dt,gameflow)
   local x,y = love.mouse.getPosition()
 
   if love.mouse.isDown(1) then
-    
-    --print(x,y)
     if colisionPlay(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) and self.canPress  then
       gameflow.state = gameflow.gameStates[2]
       self.startGame= love.graphics.setColor(255, 255, 255)
       self.canPress = false    
     end
+    if colisionExit(self ,x, y, (self.w/2)-self.fontSize,  (self.h - self.fontSize)-self.fontSize/2) and self.canPress  then
+      gameflow.state = gameflow.gameStates[3]
+      self.exitGame= love.graphics.setColor(255, 255, 255)
+      self.canPress = false   
+    end
+    
   else--Boton no esta pulsado
     if colisionPlay(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) and not colisionExit(self ,x, y, (self.w/2)-self.fontSize, (self.h - self.fontSize)-self.fontSize/2) then
       self.startGame = love.graphics.setColor(0, 255, 0)
     else
-      self.startGame=love.graphics.setColor(255, 255, 255)
+      if colisionExit(self ,x, y, (self.w/2)-self.fontSize, (self.h - self.fontSize)-self.fontSize/2) then
+        self.startGame=love.graphics.setColor(255, 0, 0)
+      else
+        self.startGame=love.graphics.setColor(255, 255, 255)
+      end
+      
     end
-    if colisionExit(self ,x, y, (self.w/2)-self.fontSize, (self.h - self.fontSize)-self.fontSize/2) and not colisionPlay(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) then
-      self.exitGame = love.graphics.setColor(255, 0, 0)
-    else
-      self.exitGame=love.graphics.setColor(255, 255, 255)
-    end
+    
   end    
 end
 function colisionPlay(self,x,y,rectX, rectY)
