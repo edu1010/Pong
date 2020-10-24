@@ -4,27 +4,31 @@ menu = Object:extend()
 local w
 local h
 local fontSize
+local canPress
 
 
 function menu:new(w,h,fontSize)
   self.w = w
   self.h = h
   self.fontSize = fontSize
+  self.canPress = true
 end
 
 function menu:update(dt,gameflow)
-print(love.mouse.getPosition(), love.mouse.isDown( 1 ))  
+--print(love.mouse.getPosition(), love.mouse.isDown( 1 ))  
 if love.mouse.isDown(1) then
   local x,y = love.mouse.getPosition()
-  print(x,y)
-  if colision(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) then
-    gameflow:siguienteNivel()
-    
+  --print(x,y)
+  if colision(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) and self.canPress  then
+    gameflow.state = gameflow.gameStates[2]
+    self.canPress = false    
   end
 end
 end
 function colision(self,x,y,rectX, rectY)
-  if x > rectX and x < (rectX + self.fontSize*2) and y > rectY and y < rectY + self.fontSize then
+  --print(self,x,y,rectX, rectY)
+  if rectX and x > rectX and x < (rectX + self.fontSize*2) and y > rectY and y < rectY + self.fontSize  then
+    print("colision",self,x,y,rectX, rectY)
     return true 
   else
     return false
