@@ -6,7 +6,7 @@ local gameStates
 local timerPartida
 local restar1
 function gameflow:new()
-  self.gameStates = {"menu","play","gameOver","requestName"}
+  self.gameStates = {"menu","play","gameOver","requestName","win"}
   self.state = self.gameStates[1]
   self.timerPartida = 60
   self.restar1 = 0
@@ -26,6 +26,11 @@ function gameflow:update(dt,score,name)
      archivo:write(puntuacion)
      archivo:close()
      self.state = self.gameStates[1]--Poner un if que lleve a un you win o a un you lose
+     if score.playerPoints > score.cpuPoints then
+       self.state = self.gameStates[5]
+     else
+       self.state = self.gameStates[3]
+     end
     end
   end
 end
@@ -57,7 +62,13 @@ function gameflow:requestName()
     return false
   end
 end
-
+function gameflow:win()
+  if (self.state == self.gameStates[5]) then
+    return true
+  else
+    return false
+  end
+end
 function gameflow:siguienteNivel()
   self.state = self.gameStates[2]
 end
