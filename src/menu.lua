@@ -64,7 +64,7 @@ function colisionPlay(self,x,y,rectX, rectY)
 end
 function colisionExit(self,x,y,rectX, rectY)
   --print(self,x,y,rectX, rectY)
-     if rectX and x > rectX and x < (rectX + self.fontSize*2) and y > rectY and y < rectY + self.fontSize  then
+    if x > (self.w/2)-self.fontSize and x < self.w/2 and y > self.h and y < (self.h - self.fontSize) then
     print("colision",self,x,y,rectX, rectY)
     return true 
   else
