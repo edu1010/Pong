@@ -82,8 +82,10 @@ function cambiarLetra(dt,letra)
       return letra
 end
 function requestName:draw()
-  love.graphics.print("PON TU NOMBRE", (self.titleW/2), self.titleH-self.titleH/2,0,1,1)
-  love.graphics.print(self.letra1,(self.titleW/2),self.titleH-self.titleH/4,0,1,1)
-  love.graphics.print(self.letra2,(self.titleW/2+40),self.titleH-self.titleH/4,0,1,1)
-  love.graphics.print(self.letra3,(self.titleW/2+80),self.titleH-self.titleH/4,0,1,1)
+  love.graphics.print("INTRODUCE YOUR NAME", 60, 50,0,1.2,1.2)
+  love.graphics.print("NOTA: Usa las felchas para asignar tus iniciales",(self.titleW/2) - (self.titleW/4) - 40, self.titleH-(self.titleH/2),0,0.4,0.4)
+  love.graphics.print("PON TU NOMBRE:", (self.titleW/2) - (self.titleW/4), self.titleH-(self.titleH/2 + 50),0,1,1)
+  love.graphics.print(self.letra1,(self.titleW/2) - (self.titleW/9),self.titleH-self.titleH/3,0,1,1)
+  love.graphics.print(self.letra2,((self.titleW/2) - (self.titleW/9)+40),self.titleH-self.titleH/3,0,1,1)
+  love.graphics.print(self.letra3,((self.titleW/2) - (self.titleW/9)+80),self.titleH-self.titleH/3,0,1,1)
 end
