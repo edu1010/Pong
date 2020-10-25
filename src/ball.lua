@@ -68,7 +68,6 @@ function ball:update(dt, player,cpu,score,sonido)
   if colisionParedes(self,sonido) and self.timer >= self.timerMaxValue then
     self.timer = 0.0
     self.ballAngle= math.rad(25) - self.ballAngle  
-    print(math.deg(self.ballAngle))
   end
   
   if colisionPorteria(self,score,sonido) then

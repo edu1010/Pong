@@ -89,10 +89,8 @@ function gameflow:ShowScore()
 end
 function gameflow.resetGame(self,b,s,p,c,m,showS)
   if self.resetTimer then
-    print("dentro")
     self.resetTimer = false
     self.timerPartida = self.timerPartidaMax
-    print(self.timerParitida)
     self.restar1 = 0
     print(self,b,s,p,c,m)
     b:resetBall()
@@ -101,7 +99,6 @@ function gameflow.resetGame(self,b,s,p,c,m,showS)
     c:resetPaddle()
     m:resetMenu()
     showS:resetScore()
-    print("reseteado")
   end
 end
 

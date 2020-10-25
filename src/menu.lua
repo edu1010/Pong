@@ -22,7 +22,6 @@ function menu:new(w,h,fontSize)
 end
 
 function menu:update(dt,gameflow)
---print(love.mouse.getPosition(), love.mouse.isDown( 1 ))  
   gameflow.reset = true
   local x,y = love.mouse.getPosition()
 
@@ -62,7 +61,6 @@ function menu:update(dt,gameflow)
   end    
 end
 function colisionPlay(self,x,y,rectX, rectY)
-  --print(self,x,y,rectX, rectY)
   if rectX and x > rectX and x < (rectX + self.fontSize*2) and y > rectY and y < rectY + self.fontSize  then
     return true 
   else
@@ -72,7 +70,6 @@ end
 
 
 function colisionExit(self,x,y,rectX, rectY)
-  --print(self,x,y,rectX, rectY)
      if rectX and x > rectX and x < (rectX + self.fontSize*2) and y > rectY and y < rectY + self.fontSize  then
     return true 
   else
