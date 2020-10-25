@@ -62,10 +62,10 @@ function love.update(dt)
     s:update(so)
     so:update()
   end
-  if g:gameOver(b,s,p,c,m) then
+  if g:gameOver(b,s,p,c,m,showS) then
     l:update(dt,g)
   end
-  if g:win(b,s,p,c,m) then
+  if g:win(b,s,p,c,m,showS) then
     wi:update(dt,g)
   end
   if g:ShowScore() then

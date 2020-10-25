@@ -53,9 +53,9 @@ function gameflow:play()
     return false
   end
 end
-function gameflow:gameOver(b,score,p,c,m)
+function gameflow:gameOver(b,score,p,c,m,showS)
   if (self.state == self.gameStates[3]) then
-    gameflow.resetGame(self,b,score,p,c,m)
+    gameflow.resetGame(self,b,score,p,c,m,showS)
     return true
   else
     return false
@@ -68,9 +68,9 @@ function gameflow:requestName()
     return false
   end
 end
-function gameflow:win(b,score,p,c,m)
+function gameflow:win(b,score,p,c,m,showS)
   if (self.state == self.gameStates[5]) then
-    gameflow.resetGame(self,b,score,p,c,m)
+    gameflow.resetGame(self,b,score,p,c,m,showS)
     return true
   else
     return false
@@ -86,7 +86,7 @@ function gameflow:ShowScore()
     return false
   end
 end
-function gameflow.resetGame(self,b,s,p,c,m)
+function gameflow.resetGame(self,b,s,p,c,m,showS)
   if self.resetTimer then
     print("dentro")
     self.resetTimer = false
@@ -99,6 +99,7 @@ function gameflow.resetGame(self,b,s,p,c,m)
     p:resetPaddle()
     c:resetPaddle()
     m:resetMenu()
+    showS:resetScore()
     print("reseteado")
   end
 end
