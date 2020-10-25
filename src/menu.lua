@@ -36,13 +36,23 @@ function menu:update(dt,gameflow)
       self.exitGame= love.graphics.setColor(255, 255, 255)
       self.canPress = false   
     end
+    if colisionPlay(self ,x, y,(self.w/2)-self.fontSize ,(self.h/2 + self.h/8)-self.fontSize/2 ) and self.canPress then--colision score 
+      gameflow.state = gameflow.gameStates[6]
+      self.exitGame= love.graphics.setColor(255, 255, 255)
+      self.canPress = false  
+    end
+    
+    
   else--Boton no esta pulsado
     if colisionPlay(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) and not colisionExit(self ,x, y, (self.w/2)-self.fontSize, (self.h - self.fontSize)-      self.fontSize/2) then
       self.startGame = love.graphics.setColor(0, 255, 0)
     else
-      if colisionExit(self ,x, y, (self.w/2)-self.fontSize, (self.h - self.fontSize)-self.fontSize/2) then
+      if colisionExit(self ,x, y, (self.w/2)-self.fontSize, (self.h - self.fontSize)-self.fontSize/2)  then
         self.startGame=love.graphics.setColor(255, 0, 0)
-      else
+      elseif colisionPlay(self ,x, y,(self.w/2)-self.fontSize ,(self.h/2 + self.h/8)-self.fontSize/2 ) then--colision score 
+      self.exitGame= love.graphics.setColor(255, 0, 255)
+      --self.canPress = false  
+    else
         self.startGame=love.graphics.setColor(255, 255, 255)
       end
       

@@ -8,7 +8,7 @@ local timerPartidaMax --reset timer
 local restar1
 local resetTimer
 function gameflow:new(duracion)
-  self.gameStates = {"menu","play","gameOver","requestName","win"}
+  self.gameStates = {"menu","play","gameOver","requestName","win","ShowScore"}
   self.state = self.gameStates[1]
   self.timerPartida = duracion
   self.timerPartidaMax = duracion
@@ -79,7 +79,13 @@ end
 function gameflow:siguienteNivel()
   self.state = self.gameStates[2]
 end
-
+function gameflow:ShowScore()
+  if (self.state == self.gameStates[6]) then
+    return true
+  else
+    return false
+  end
+end
 function gameflow.resetGame(self,b,s,p,c,m)
   if self.resetTimer then
     print("dentro")

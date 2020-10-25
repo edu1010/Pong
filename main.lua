@@ -9,6 +9,7 @@ require "src/gameflow"
 require "src/requestName"
 require "src/win"
 require "src/lose"
+require "src/ShowScores"
 require "data"
 
 
@@ -23,6 +24,7 @@ local so -- Sonido
 local rN --requestName
 local wi --win
 local l --lose
+local showS --showScores
 
 function love.load(arg)
   if arg[#arg] == "-debug" then require("mobdebug").start() end -- Enable the debugging with ZeroBrane Studio
@@ -38,6 +40,7 @@ function love.load(arg)
   rN = requestName(w,h)
   wi = win(w,h)
   l = lose(w,h)
+  showS = showScores(w,h)
 end
 
 function love.update(dt)
@@ -65,7 +68,9 @@ function love.update(dt)
   if g:win(b,s,p,c,m) then
     wi:update(dt,g)
   end
-
+  if g:ShowScore() then
+    showS:update(dt,g)
+  end
 end
 
 function love.draw()
@@ -87,5 +92,8 @@ function love.draw()
   end
   if g:win() then
     wi:draw()
+  end
+   if g:ShowScore() then
+    showS:draw()
   end
 end
