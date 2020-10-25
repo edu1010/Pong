@@ -18,6 +18,7 @@ end
 
 function gameflow:update(dt,score,name)
  if self.state == self.gameStates[2] then
+   self.resetTimer = true
      self.restar1 = self.restar1+dt
      if self.restar1 >=1 then
        self.restar1 = 0
@@ -80,7 +81,6 @@ function gameflow:siguienteNivel()
 end
 
 function gameflow.resetGame(self,b,s,p,c,m)
-  print(self.resetTimer)
   if self.resetTimer then
     print("dentro")
     self.resetTimer = false
