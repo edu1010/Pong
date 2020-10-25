@@ -59,6 +59,6 @@ function cpu(self,ball,dt)
     self.paddleY = self.paddleY+1 * self.paddleSpeed *dt
   end
 end
-function resetPaddle(self)
+function paddle:resetPaddle()
   self.paddleY = self.paddleoY
 end

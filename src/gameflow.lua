@@ -6,11 +6,14 @@ local gameStates
 local timerPartida
 local timerPartidaMax --reset timer
 local restar1
+local resetTimer
 function gameflow:new(duracion)
   self.gameStates = {"menu","play","gameOver","requestName","win"}
   self.state = self.gameStates[1]
   self.timerPartida = duracion
+  self.timerPartidaMax = duracion
   self.restar1 = 0
+  self.resetTimer = true
 end
 
 function gameflow:update(dt,score,name)
@@ -51,7 +54,7 @@ function gameflow:play()
 end
 function gameflow:gameOver(b,score,p,c,m)
   if (self.state == self.gameStates[3]) then
-    resetGame(self,b,score,p,c,m)
+    gameflow.resetGame(self,b,score,p,c,m)
     return true
   else
     return false
@@ -66,7 +69,7 @@ function gameflow:requestName()
 end
 function gameflow:win(b,score,p,c,m)
   if (self.state == self.gameStates[5]) then
-    resetGame(self,b,score,p,c,m)
+    gameflow.resetGame(self,b,score,p,c,m)
     return true
   else
     return false
@@ -75,15 +78,22 @@ end
 function gameflow:siguienteNivel()
   self.state = self.gameStates[2]
 end
-function resetGame(self,b,s,p,c,m)
+function gameflow.resetGame(self,b,s,p,c,m)
+  print(self.resetTimer)
+  if self.resetTimer then
+    print("dentro")
+    self.resetTimer = false
+    self.timerPartida = self.timerPartidaMax
+    print(self.timerParitida)
+    self.restar1 = 0
+    print(self,b,s,p,c,m)
+    b:resetBall()
+    s:resetScore()
+    p:resetPaddle()
+    c:resetPaddle()
+    m:resetMenu()
+    print("reseteado")
+  end
   
-  self.timerParitida = self.timerPartidaMax
-  self.restar1 = 0
-  b.resetBall(b)
-  s.resetScore(s)
-  p.resetPaddle(p)
-  c.resetPaddle(c)
-  m.resetMenu()
-  print("entro",g.timerParitida)
 end
 

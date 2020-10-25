@@ -118,7 +118,7 @@ function colisionPorteria(self,score,sonido)
   end
   return porteria
 end
-function resetBall(self)
+function ball:resetBall()
   self.ballX = self.ballXo
   self.ballY = self.ballYo
   self.timer = self.timerMaxValue

@@ -42,7 +42,10 @@ end
 
 function love.update(dt)
   g:update(dt,s,rN)
-  print(g.timerPartida)
+ -- print(g.timerPartida)
+  --print(g.restar1)
+  --print(g.resetTimer)
+  
   if g:menu() then
     m:update(dt,g)
   end
@@ -58,15 +61,11 @@ function love.update(dt)
   end
   if g:gameOver(b,s,p,c,m) then
     l:update(dt,g)
-    print(g)
-  --  g.resetGame(g,b,s,p,c,m)
   end
   if g:win(b,s,p,c,m) then
     wi:update(dt,g)
-   -- g.resetGame(g,b,s,p,c,m)
   end
-  
-  
+
 end
 
 function love.draw()

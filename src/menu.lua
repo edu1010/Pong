@@ -22,10 +22,11 @@ end
 
 function menu:update(dt,gameflow)
 --print(love.mouse.getPosition(), love.mouse.isDown( 1 ))  
+  gameflow.reset = true
   local x,y = love.mouse.getPosition()
 
   if love.mouse.isDown(1) then
-    if colisionPlay(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) and self.canPress  then
+    if colisionPlay(self ,x, y, (self.w/2)-self.fontSize, (self.h/2)-self.fontSize/2) then
       gameflow.state = gameflow.gameStates[4]
       self.startGame= love.graphics.setColor(255, 255, 255)
       self.canPress = false    
@@ -82,7 +83,7 @@ function menu:draw()
   love.graphics.rectangle( "line", (self.w/2)-self.fontSize, (self.h-self.fontSize)-self.fontSize/2, self.fontSize*2, self.fontSize)
   
 end
-function resetMenu(self)
+function menu:resetMenu()
   self.canPress =true
 end
 
