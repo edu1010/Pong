@@ -1,9 +1,4 @@
 
-
-AAA score: 0 Cpu score:3
-AAA score: 1 Cpu score:0
-
-
 AAA score: 0 Cpu score:1
 EDU score: 1 Cpu score:0
 AAA score: 0 Cpu score:1
@@ -25,55 +20,6 @@ AAA score: 0 Cpu score:0
 AAA score: 0 Cpu score:0
 AAA score: 0 Cpu score:0
 AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:1
-AAA score: 0 Cpu score:1
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:1
-AAA score: 0 Cpu score:1
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:1
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 0 Cpu score:0
-AAA score: 1 Cpu score:1
-AAA score: 1 Cpu score:1
-AAA score: 1 Cpu score:1
-AAA score: 0 Cpu score:1
 AAA score: 0 Cpu score:0
 AAA score: 0 Cpu score:0
 AAA score: 0 Cpu score:0

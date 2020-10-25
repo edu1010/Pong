@@ -78,6 +78,7 @@ end
 function gameflow:siguienteNivel()
   self.state = self.gameStates[2]
 end
+
 function gameflow.resetGame(self,b,s,p,c,m)
   print(self.resetTimer)
   if self.resetTimer then
@@ -94,6 +95,5 @@ function gameflow.resetGame(self,b,s,p,c,m)
     m:resetMenu()
     print("reseteado")
   end
-  
 end
 

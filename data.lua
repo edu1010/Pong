@@ -9,5 +9,6 @@
  sizeFont = 50
  scoreH = 20
  duracionPartida = 10
+
  
  
