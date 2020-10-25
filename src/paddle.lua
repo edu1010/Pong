@@ -1,3 +1,4 @@
+-- Autores Eduard Corral, Lidia Alvarez
 local Object = Object or require "lib/Classic"
 paddle = Object:extend()
 
@@ -33,6 +34,7 @@ function paddle:draw()
     
   love.graphics.draw(self.spritePl, self.paddleX, self.paddleY)
 end
+-- Autores Eduard Corral, Lidia Alvarez
 function MovePlayer(self,dt)
   
   if love.keyboard.isDown("up") then

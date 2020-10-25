@@ -1,3 +1,4 @@
+-- Autores Eduard Corral, Lidia Alvarez
 local Object = Object or require "lib/Classic"
 win = Object:extend()
 
@@ -20,4 +21,6 @@ function win:draw()
   love.graphics.setColor(0,250,0)
   
   love.graphics.print("YOU WIN", (self.winW/2) - (self.winH/4 - 20) , (self.winH/2),0,1,1)
+  
+  love.graphics.print("Press ENTER to continue", self.winW/7, self.winH - 100)
 end

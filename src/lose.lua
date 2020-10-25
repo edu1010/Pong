@@ -1,3 +1,4 @@
+-- Autores Eduard Corral, Lidia Alvarez
 local Object = Object or require "lib/Classic"
 lose = Object:extend()
 
@@ -22,4 +23,6 @@ function lose:draw()
   love.graphics.setColor(250,0,0)
   
   love.graphics.print("YOU LOSE", (self.loseW/2) - (self.loseH/4 - 20) , (self.loseH/2),0,1,1)
+  
+  love.graphics.print("Press ENTER to continue", self.loseW/7, self.loseH - 100)
 end

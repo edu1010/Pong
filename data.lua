@@ -1,4 +1,4 @@
-
+-- Autores Eduard Corral, Lidia Alvarez
  ballSpeed = 100
  ballSpeedIncrease = 20
  radio = 6

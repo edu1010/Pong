@@ -1,3 +1,4 @@
+-- Autores Eduard Corral, Lidia Alvarez
 local Object = Object or require "lib/Classic"
 score = Object:extend()
 

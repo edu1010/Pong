@@ -1,3 +1,4 @@
+-- Autores Eduard Corral, Lidia Alvarez
 local Object = Object or require "lib/Classic"
 showScores = Object:extend()
 
@@ -55,11 +56,13 @@ function showScores:update(dt,g)
 end
 
 function showScores:draw()
-  love.graphics.print(self.score1, 0, 0,0,1,1)
-  love.graphics.print(self.score2, 0, 50,0,1,1)
-  love.graphics.print(self.score3, 0, 100,0,1,1)
-  love.graphics.print(self.score4, 0, 150,0,1,1)
-  love.graphics.print(self.score5, 0, 200,0,1,1)
+  love.graphics.print("SCORE", self.scoreW/2 -100, 10)
+  love.graphics.print(self.score1, self.scoreW/7, 100)
+  love.graphics.print(self.score2, self.scoreW/7, 150)
+  love.graphics.print(self.score3, self.scoreW/7, 200)
+  love.graphics.print(self.score4, self.scoreW/7, 250)
+  love.graphics.print(self.score5, self.scoreW/7, 300)
+  love.graphics.print("Press ENTER to continue", self.scoreW/7, self.scoreH - 100)
 end
 function showScores:resetScore()
   self.actualizar = true

@@ -1,3 +1,4 @@
+-- Autores Eduard Corral, Lidia Alvarez
 local w, h -- Variables to store the screen width and height
 local Object = require "lib/classic"
 require "src/ball"

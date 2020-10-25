@@ -1,3 +1,4 @@
+-- Autores Eduard Corral, Lidia Alvarez
 local Object = Object or require "lib/Classic"
 ball = Object:extend()
 
@@ -121,6 +122,7 @@ end
 function ball:resetBall()
   self.ballX = self.ballXo
   self.ballY = self.ballYo
+  self.ballSpeed = self.ballSpeedCopy
   self.timer = self.timerMaxValue
 end
 

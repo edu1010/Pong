@@ -1,3 +1,4 @@
+-- Autores Eduard Corral, Lidia Alvarez
 local Object = Object or require "lib/Classic"
 menu = Object:extend()
 
@@ -32,7 +33,7 @@ function menu:update(dt,gameflow)
       self.canPress = false    
     end
     if colisionExit(self ,x, y, (self.w/2)-self.fontSize,  (self.h - self.fontSize)-self.fontSize/2) and self.canPress  then
-      love.event.quit(0)
+      love.event.quit(1)
       self.exitGame= love.graphics.setColor(255, 255, 255)
       self.canPress = false   
     end
