@@ -76,6 +76,7 @@ function colisionExit(self,x,y,rectX, rectY)
     return false
   end
 end
+print("prueba")
 
 function menu:draw()
   --love.graphics.line( self.w/2, 0,self.w/2,h)--
