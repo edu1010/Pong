@@ -1,0 +1,9 @@
+EDU score: 1 Cpu score:0
+EDU score: 5 Cpu score:2
+LAA score: 4 Cpu score:1
+AAA score: 1 Cpu score:0
+AAA score: 1 Cpu score:2
+EDU score: 0 Cpu score:1
+EDU score: 1 Cpu score:0
+EDU score: 1 Cpu score:0
+AAA score: 0 Cpu score:2
